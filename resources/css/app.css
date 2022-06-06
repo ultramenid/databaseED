@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.selection-bg ::selection {
+    background-color: #79ffe1;
+}
+
+.dark .selection-bg ::selection {
+        background-color: #f81ce5;
+        color: white;
+}

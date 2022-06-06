@@ -1,0 +1,348 @@
+<?php
+
+namespace App\Http\Livewire;
+
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Http;
+// use App\Http\Livewire\ImageManager;
+use Intervention\Image\ImageManager as ImageImageManager;
+
+class AddDatabaseComponent extends Component
+{
+    use WithFileUploads;
+    public $photo, $provinsi = '. . .', $kabkota = '. . .', $kecamatan = '. . .', $desa= '. . .',$pelakus = [], $sumberurl = [], $pelaku = '. . .', $jeniskelamin, $tglkejadian, $kasus, $issu, $korban, $pekerjaan, $jumlahkorban, $namapelaku, $konflikdengan, $kronologi, $perkembangankasus, $akibat, $bentukancaman, $sektor;
+    public $isProvinsi = false, $isKabkota = false, $isKecamatan= false, $isPelaku = false, $isMap = false, $isDesa = false;
+    public $idProvinsi, $idKabkota,$idKecamatan, $lat = '', $long = '';
+    public $chooseprovinsi = '', $choosekabkota = '', $choosekecamatan ='', $choosepelaku = '', $choosedesa = '', $url;
+
+    public function uploadImage(){
+        $file = $this->photo->store('public/files/photos');
+        $foto = $this->photo->hashName();
+
+        $manager = new ImageImageManager();
+
+        // https://image.intervention.io/v2/api/fit
+        //crop the best fitting 1:1 ratio (200x200) and resize to 200x200 pixel
+        $image = $manager->make('storage/files/photos/'.$foto)->fit(600, 360);
+        $image->save('storage/files/photos/thumbnail/'.$foto);
+        return $foto;
+    }
+
+    public function updatedPhoto($photo){
+        // dd($photo->getSize());
+        $extension = pathinfo($photo->getFilename(), PATHINFO_EXTENSION);
+        if (!in_array($extension, ['png', 'jpeg', 'bmp', 'gif','jpg','webp'])) {
+           $this->reset('photo');
+           $message = 'Files not supported';
+           $type = 'error'; //error, success
+           $this->emit('toast',$message, $type);
+        }
+    }
+    public function getprovinsi(){
+        $sc = '%' . $this->chooseprovinsi . '%';
+
+        return  DB::table('provinces')
+        ->select('id', 'name')
+        ->where('name', 'like',  $sc)
+        ->limit(15)
+        ->get();
+
+    }
+
+    public function checkKasus(){
+        return DB::table('eddatabase')
+        ->where('tanggalkejadian', $this->tglkejadian)
+        ->where('kecamatan', $this->kecamatan)
+        ->where('korban', $this->korban)
+        ->first();
+    }
+
+    public function getstringPelaku(){
+        return implode(',', $this->pelakus);
+    }
+
+    public function getstringURL(){
+        return implode(',', $this->sumberurl);
+    }
+    public function storeDatabase(){
+        if($this->manualValidation()){
+            DB::table('eddatabase')->insert([
+                    'tanggalkejadian' => $this->tglkejadian,
+                    'kasus' => $this->kasus,
+                    'provinsi' => $this->provinsi,
+                    'kabkota' => $this->kabkota,
+                    'kecamatan' => $this->kecamatan,
+                    'issu' => $this->issu,
+                    'korban' => $this->korban,
+                    'pekerjaan' => $this->pekerjaan,
+                    'jeniskelamin' => $this->jeniskelamin,
+                    'jumlahkorban' => $this->jumlahkorban,
+                    'pelaku' => $this->getstringPelaku(),
+                    'akibat' => $this->akibat,
+                    'konflikdengan' => $this->konflikdengan,
+                    'bentukancaman' => $this->bentukancaman,
+                    'sektor' => $this->sektor,
+                    'kronologi' => $this->kronologi,
+                    'perkembangankasus' => $this->perkembangankasus,
+                    'sumber' => $this->getstringURL(),
+                    'lat' => $this->lat,
+                    'namapelaku' => $this->namapelaku,
+                    'long' => $this->long,
+                    'img' => $this->uploadImage(),
+                    'created_at' => Carbon::now("Asia/Jakarta")
+                ]);
+        }
+    }
+
+
+
+    public function getKabkota(){
+        $sc = '%' . $this->choosekabkota . '%';
+
+        return  DB::table('regencies')
+        ->select('id', 'name')
+        ->where('province_id', $this->idProvinsi)
+        ->where('name', 'like',  $sc)
+        ->limit(15)
+        ->get();
+
+    }
+
+    public function getKecamatan(){
+        $sc = '%' . $this->choosekecamatan . '%';
+
+        return  DB::table('districts')
+        ->select('id', 'name')
+        ->where('regency_id', $this->idKabkota)
+        ->where('name', 'like',  $sc)
+        ->limit(15)
+        ->get();
+    }
+
+    public function getDesa(){
+        $sc = '%' . $this->choosedesa . '%';
+
+        return  DB::table('villages')
+        ->select('id', 'name')
+        ->where('district_id', $this->idKecamatan)
+        ->where('name', 'like',  $sc)
+        ->limit(15)
+        ->get();
+    }
+
+    public function toogleProvinsi(){
+        // $this->provincies = $this->getprovinsi();
+        $this->isProvinsi =! $this->isProvinsi;
+
+    }
+
+    public function toogleKabkota(){
+        // $this->provincies = $this->getprovinsi();
+        $this->isKabkota =! $this->isKabkota;
+    }
+    public function toogleKecamatan(){
+        // $this->provincies = $this->getprovinsi();
+        $this->isKecamatan =! $this->isKecamatan;
+        // dd($kecamatan);
+
+    }
+
+    public function toogleDesa(){
+        // $this->provincies = $this->getprovinsi();
+        $this->isDesa =! $this->isDesa;
+        // dd($kecamatan);
+
+    }
+
+    public function tooglePelaku(){
+        $this->isPelaku = true;
+    }
+
+    public function selectProvinsi($id,$name){
+        $this->provinsi = $name;
+        $this->idProvinsi = $id;
+        $this->isProvinsi = false;
+        $this->kabkota = '. . . ';
+        $this->kecamatan = '. . . ';
+        // $this->desa = '. . . ';
+
+    }
+    public function selectKabkota($id,$name){
+        $this->kabkota = $name;
+        $this->idKabkota = $id;
+        $this->isKabkota = false;
+        $this->kecamatan = '. . . ';
+        // $this->desa = '. . . ';
+    }
+
+    public function selectKecamatan($id,$name){
+        $this->kecamatan = $name;
+        $this->idKecamatan = $id;
+        $this->isKecamatan = false;
+        // $this->desa='. . .';
+        try {
+            $req = Http::get('http://129.150.48.143:8080/geoserver/simontini/ows',
+            [
+                'service' => 'wfs',
+                'version' => '1.1.1',
+                'request' => 'GetFeature',
+                'typename' => 'simontini:adm_kecamatan_in',
+                'cql_filter' => "kecamatan = '". $name. "'",
+                'outputFormat' => 'application/json',
+            ]);
+            $response = json_decode($req->getBody()->getContents(), true);
+            // dd($response);
+            $this->long = $response['features'][0]['properties']['long'];
+            $this->lat = $response['features'][0]['properties']['lat'];
+            $this->dispatchBrowserEvent('connected');
+        } catch (\Throwable $th) {
+
+            $message = 'Coordinates '.$name.' not found.';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            $this->dispatchBrowserEvent('deletemarker');
+
+        }
+    }
+
+    // public function selectDesa($id, $name){
+    //     $this->desa = $name;
+    //     $this->isDesa = false;
+    //     $this->isMap = true;
+    //     // dd($name);
+
+    // }
+    public function setPelaku($pelaku){
+        if (!in_array($pelaku, $this->pelakus)) {
+            array_push($this->pelakus, $pelaku);
+        }
+        $this->choosepelaku = $pelaku;
+        $this->pelaku = '';
+
+    }
+
+    public function setsumberURL(){
+        if (!in_array($this->url, $this->sumberurl)) {
+            array_push($this->sumberurl, $this->url);
+        }
+        $this->url = '';
+
+    }
+
+    public function closePelaku(){
+        $this->isPelaku = false;
+    }
+
+    public function deleteTags($id){
+        unset($this->pelakus[$id]);
+
+
+        if($this->pelaku = 'Pelaku Lainya'){
+            $this->pelaku = '';
+            $this->choosepelaku = '';
+        }
+    }
+    public function deleteURL($id){
+        unset($this->sumberurl[$id]);
+    }
+
+
+    public function render()
+    {
+        // dd(phpinfo());
+        $provincies= $this->getprovinsi();
+        $kabkotas = $this->getKabkota();
+        $kecamatans = $this->getKecamatan();
+        $desas = $this->getDesa();
+        return view('livewire.add-database-component', compact('provincies', 'kabkotas', 'kecamatans', 'desas'));
+    }
+
+    public function manualValidation(){
+        if($this->checkKasus()){
+            $message = 'Data already exists';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->tglkejadian == ''){
+            $message = 'Tanggal kejadian is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->kasus == ''){
+            $message = 'Kasus is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->provinsi == '. . .'){
+            $message = 'Provinsi is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->kabkota == '. . .'){
+            $message = 'Kabupaten/Kota is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->kecamatan == '. . .'){
+            $message = 'Kecamatan is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->issu == ''){
+            $message = 'Issu is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->korban == ''){
+            $message = 'Korban is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->pekerjaan == ''){
+            $message = 'Pekerjaan is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->jeniskelamin == ''){
+            $message = 'Jenis kelamin is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->jumlahkorban == ''){
+            $message = 'Jumlah Korban is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->bentukancaman == ''){
+            $message = 'Bentuk Ancaman is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->sektor == ''){
+            $message = 'Sektor is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->kronologi == ''){
+            $message = 'Kronologi is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->perkembangankasus == ''){
+            $message = 'Kronologi is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->sumberurl == ''){
+            $message = 'Sumber URL is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }
+
+        return true;
+    }
+}
