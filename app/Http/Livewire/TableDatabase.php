@@ -8,7 +8,7 @@ use Livewire\Component;
 class TableDatabase extends Component
 {
 
-    public $dataField = 'tanggalkejadian', $dataOrder = 'desc', $paginate = 10, $search = '';
+    public $dataField = 'tanggalkejadian', $dataOrder = 'asc', $paginate = 10, $search = '';
 
     public function getDatabase(){
         $sc = '%' . $this->search . '%';
