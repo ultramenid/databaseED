@@ -13,12 +13,16 @@
 
         @foreach ($markers as $item )
             var marker = L.marker(new L.LatLng({{$item->lat}}, {{$item->long}}));
+            markers.addLayer(marker);
+
         @endforeach
 
 
 
 		map.addLayer(markers);
-
+        markers.on('clusterclick', function (a) {
+            a.layer.zoomToBounds();
+        });
 
     </script>
 </div>
