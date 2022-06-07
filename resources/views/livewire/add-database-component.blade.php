@@ -163,6 +163,7 @@
                     <a class="text-white py-1 hover:bg-gray-800 px-4" wire:click="setPelaku('Preman')" value="2">Preman</a>
                     <a class="text-white py-1 hover:bg-gray-800 px-4" wire:click="setPelaku('Kejaksaan')" value="2">Kejaksaan</a>
                     <a class="text-white py-1 hover:bg-gray-800 px-4" wire:click="setPelaku('Preman Bayaran')" value="2">Preman Bayaran</a>
+                    <a class="text-white py-1 hover:bg-gray-800 px-4" wire:click="setPelaku('Negara')" value="2">Negara</a>
                     <a class="text-white py-1 hover:bg-gray-800 px-4" wire:click="setPelaku('Pelaku Lainnya')" value="2">Pelaku Lainya</a>
 
             </div>
