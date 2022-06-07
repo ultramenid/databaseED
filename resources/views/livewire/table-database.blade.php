@@ -39,7 +39,7 @@
         @forelse ($databases as $item)
         <tr>
             <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
-                <a>{{ \Carbon\Carbon::parse($item->tanggalkejadian)->format('Y F d')}}</a>
+                <a>{{ \Carbon\Carbon::parse($item->tanggalkejadian)->format('d M Y')}}</a>
             </td>
             <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
                 <a href="{{ url('/cms/database/'.$item->id) }}">{{ $item->kasus }}</a>

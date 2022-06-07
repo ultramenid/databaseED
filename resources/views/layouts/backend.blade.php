@@ -21,9 +21,7 @@
     <script src="{{ asset('js/app.js') }}" defer ></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    <script src="https://www.zimmi.cz/Leaflet-Coordinates-Control/Control.Coordinates.js"></script>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/"></script>
     <script src="{{ asset('js/bing.js') }}"></script>
 
 </head>

@@ -7,8 +7,8 @@
     <div class="max-w-5xl mx-auto px-6 md:px-8 sm:py-16 py-8 min-h-screen">
         <h1 class="font-bold sm:text-3xl text-2xl text-center">Database Kasus Environmental Defender Yayasan Auriga</h1>
         <p class="text-center text-green-800 font-bold text-xl">(https://environmentaldefender.id)</p>
-        <div class="w-full h-96 bg-black mt-6 flex items-center justify-center">
-            <p class="text-white">Peta</p>
+        <div >
+            <livewire:map-database />
         </div>
         <div class="flex justify-between space-x-4 mt-6 ">
             <div class="w-6/12 h-96 bg-red-500 flex items-center justify-center">

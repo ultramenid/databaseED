@@ -191,7 +191,7 @@
                     <option value="Penahanan">Penahanan</option>
                     <option value="Meninggal Dunia">Meninggal Dunia</option>
                     <option value="Luka-Luka">Luka-Luka</option>
-                    <option value="Gangguan Sikologin">Gangguan Sikologis</option>
+                    <option value="Gangguan Sikologin">Gangguan Psikologis</option>
                     <option value="Deportasi">Deportasi</option>
                     <option value="Pengrusakan">Pengrusakan</option>
                     <option value="Pembakaran">Pembakaran</option>
