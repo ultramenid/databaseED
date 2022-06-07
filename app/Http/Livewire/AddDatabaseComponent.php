@@ -94,6 +94,7 @@ class AddDatabaseComponent extends Component
                     'img' => $this->uploadImage(),
                     'created_at' => Carbon::now("Asia/Jakarta")
                 ]);
+                redirect()->to('/cms/dashboard');
         }
     }
 
