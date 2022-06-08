@@ -3,7 +3,7 @@
     <h1 class="font-bold sm:text-5xl text-4xl">Tambah database</h1>
     <div class="">
         <h1 class="text-xl   text-gray-900 mt-8 mb-1">Tanggal Kejadian</h1>
-        <div class=" sm:w-4/12 w-full" wire:ignore x-init="flatpickr('#tglkejadian', { enableTime: false,dateFormat: 'd-m-Y', disableMobile: 'true'});">
+        <div class=" sm:w-4/12 w-full" wire:ignore x-init="flatpickr('#tglkejadian', { enableTime: false,dateFormat: 'Y-m-d', disableMobile: 'true'});">
             <input id="tglkejadian" type="text" class="bg-gray-100  text-gray-00  rounded w-full border  py-2 px-4 focus:outline-none  "  wire:model.defer='tglkejadian' placeholder="Date. . . ">
         </div>
     </div>
