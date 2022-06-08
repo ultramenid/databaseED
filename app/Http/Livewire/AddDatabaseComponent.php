@@ -190,8 +190,8 @@ class AddDatabaseComponent extends Component
                 'service' => 'wfs',
                 'version' => '1.1.1',
                 'request' => 'GetFeature',
-                'typename' => 'simontini:adm_kecamatan_in',
-                'cql_filter' => "kecamatan = '". $name. "'",
+                'typename' => 'simontini:Kecamatan_IDN',
+                'cql_filter' => "provinsi = '". $this->provinsi ."' and kab_kota = '". $this->kabkota. "' and kecamatan = '". $name. "'",
                 'outputFormat' => 'application/json',
             ]);
             $response = json_decode($req->getBody()->getContents(), true);

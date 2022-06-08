@@ -12,7 +12,7 @@
         var markers = L.markerClusterGroup();
 
         @foreach ($markers as $item )
-            var marker = L.marker(new L.LatLng({{$item->lat}}, {{$item->long}}));
+            var marker = L.marker(new L.LatLng({{$item->lat}}, {{$item->long}}), { title: "{{$item->kasus}}"});
             markers.addLayer(marker);
 
         @endforeach
