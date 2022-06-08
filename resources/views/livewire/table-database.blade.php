@@ -45,7 +45,7 @@
                 <a href="{{ url('/cms/database/'.$item->id) }}">{{ $item->kasus }}</a>
             </td>
             <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
-                <a >{{ $item->kronologi }}</a>
+                <a >{{ substr($item->kronologi,0,140).'...'  }}</a>
             </td>
 
 
