@@ -10,13 +10,8 @@
         <div >
             <livewire:map-database />
         </div>
-        <div class="flex justify-between space-x-4 mt-6 ">
-            <div class="w-6/12 h-96 bg-red-500 flex items-center justify-center">
-                <p>Jumlah Korban</p>
-            </div>
-            <div class="w-6/12 h-96 bg-yellow-500 flex items-center justify-center">
-                <p>Pelaku</p>
-            </div>
+        <div class="w-full h-96">
+            <livewire:jumlah-corban-component />
         </div>
         <div class="flex justify-between space-x-4 mt-6 ">
             <div class="w-6/12 h-96 bg-orange-500 flex items-center justify-center">

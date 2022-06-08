@@ -21,6 +21,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::group(['middleware' => 'checkSession'], function () {
     Route::get('/cms/dashboard', [DashboardController::class, 'index'])->name('login');
     Route::get('/cms/adddatabase', [DashboardController::class, 'addDatabase'])->name('addDb');
+    Route::get('/cms/editdatabase/{id}', [DashboardController::class, 'editDatabase']);
+
+
+
 
 });
 

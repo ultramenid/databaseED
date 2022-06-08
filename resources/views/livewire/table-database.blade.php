@@ -42,7 +42,7 @@
                 <a>{{ \Carbon\Carbon::parse($item->tanggalkejadian)->format('d M Y')}}</a>
             </td>
             <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
-                <a href="{{ url('/cms/database/'.$item->id) }}">{{ $item->kasus }}</a>
+                <a href="{{ url('/cms/editdatabase/'.$item->id) }}">{{ $item->kasus }}</a>
             </td>
             <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
                 <a >{{ substr($item->kronologi,0,140).'...'  }}</a>
@@ -63,7 +63,7 @@
                         x-show.transition="open"
                         @click.away="open = false"
                         x-cloak style="display: none !important">
-                        <a data-turbolinks="false" href="{{ url('/cms/database/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 " @click.away="open = false">Edit</li></a>
+                        <a data-turbolinks="false" href="{{ url('/cms/editdatabase/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 " @click.away="open = false">Edit</li></a>
                         <li class="block hover:bg-gray-200 cursor-pointer  py-1 mb-2 px-4 "  wire:click="delete({{ $item->id }})" @click.away="open = false">Delete</li>
                     </ul>
                 </div>

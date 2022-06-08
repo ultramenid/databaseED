@@ -169,7 +169,7 @@
             </div>
             @endif
         </div>
-        @if ($choosepelaku === 'Pelaku Lainnya')
+        @if ($choosepelaku === 'Pelaku Lainnya' or $namapelaku)
         <div class="sm:w-6/12 w-full" x-data="{count:0}">
             <h1 class="text-xl   text-gray-900  mb-1">Nama pelaku</h1>
             <input maxlength="60" x-ref="countme" x-on:keyup="count = $refs.countme.value.length" type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-4 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='namapelaku' placeholder="Title. . . ">
@@ -270,13 +270,13 @@
     </div>
     <div class="flex items-center justify-center px-2 py-2 mt-6 border border-dashed border-gray-400 rounded">
         <label class="cursor-pointer">
-            @if (! $photo )
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-gray-400 mx-auto" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-              </svg>
-            @else
-                <img src="{{$photo->temporaryUrl()}}" alt="" class=" mx-auto sm:h-96 h-full w-full rounded ">
-            @endif
+            @if ($uphoto)
+                            @if ($photo)
+                                <img src="{{$photo->temporaryUrl()}}" alt="" class=" mx-auto w-full rounded ">
+                            @else
+                                <img src="{{ asset('/storage/files/photos/'.$uphoto) }}" alt="" class=" mx-auto w-full rounded ">
+                            @endif
+                        @endif
             <input type='file' class="hidden" wire:model='photo' accept="image/*" />
             <p wire:loading.remove wire:target="photo" class="text-xs text-center text-gray-400 mt-2">Clik to upload image</p>
             <p wire:loading wire:target="photo" class="text-xs text-center text-gray-400">Uploding. . . . . </p>
@@ -303,7 +303,7 @@
                 }).addTo(map)
 
 
-                marker = L.marker(['', '']).addTo(map);
+                marker = L.marker([@this.lat, @this.long]).addTo(map);
                 window.addEventListener('connected', event => {
                         map.removeLayer(marker)
                         marker = L.marker([@this.lat, @this.long]).addTo(map);

@@ -15,4 +15,10 @@ class DashboardController extends Controller
         $title = 'Add database';
         return view('addDatabase', compact('title'));
     }
+
+    public function editDatabase($id){
+        $id = $id;
+        $title = 'Edit Database';
+        return view('editDatabase', compact('title','id'));
+    }
 }
