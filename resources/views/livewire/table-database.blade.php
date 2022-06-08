@@ -78,4 +78,7 @@
         @endforelse
     </tbody>
 </table>
+@if ($databases)
+{{ $databases->links('livewire.pagination') }}
+@endif
 </div>

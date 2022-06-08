@@ -4,10 +4,11 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TableDatabase extends Component
 {
-
+    use WithPagination;
     public $dataField = 'tanggalkejadian', $dataOrder = 'asc', $paginate = 10, $search = '';
 
     public function getDatabase(){
