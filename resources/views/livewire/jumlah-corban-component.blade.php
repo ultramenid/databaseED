@@ -41,7 +41,7 @@ var korban = JSON.parse('<?php echo $korbans  ?>');
             curve: 'smooth'
           },
           title: {
-            text: 'asdasd',
+            text: 'Jumlah Korban',
             align: 'left',
             margin: 10,
             offsetX: 0,
