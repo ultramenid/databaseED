@@ -1,4 +1,5 @@
 <div>
+
 <div class="flex justify-end">
     <input class="sm:w-52 w-full mt-6 mb-4 py-2 border-gray-500 border px-2 focus:outline-none" wire:model='search'>
 </div>

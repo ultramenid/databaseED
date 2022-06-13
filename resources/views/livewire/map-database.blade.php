@@ -1,5 +1,5 @@
 <div>
-    <div id="map" class="h-96 w-full"></div>
+    <div id="map" class="h-106 w-full z-10"></div>
 
     <script>
         var map = L.map('map').setView([0.7893, 117.9213],4);

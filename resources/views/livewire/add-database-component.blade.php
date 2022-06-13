@@ -114,7 +114,7 @@
             <label class="w-full"  >
                 <select wire:ignore wire:model='jeniskelamin' class="w-full mb-6 bg-gray-100  text-gray-700  rounded  border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
                     <option value="">. . .</option>
-                    <option value="Laki-Laku">Laki-laki</option>
+                    <option value="Laki-Laki">Laki-laki</option>
                     <option value="Perempuan">Perempuan</option>
                     <option value="Laki-Laki & Perempuan">Laki-laki & Perempuan</option>
                 </select>

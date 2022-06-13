@@ -9,6 +9,8 @@ use Livewire\WithPagination;
 class TableDatabase extends Component
 {
     use WithPagination;
+    // public $deleter = true;
+    // public $deleteName, $deleteID;
     public $dataField = 'tanggalkejadian', $dataOrder = 'asc', $paginate = 10, $search = '';
 
     public function getDatabase(){
@@ -22,6 +24,10 @@ class TableDatabase extends Component
         } catch (\Throwable $th) {
             return [];
         }
+    }
+
+    public function delete($id){
+        $this->emit('deleteModal', $id);
     }
 
 

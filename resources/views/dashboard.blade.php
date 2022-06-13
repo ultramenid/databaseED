@@ -3,22 +3,27 @@
 
 @section('content')
     @include('partials.backendHeader')
+    <livewire:deleter-modal />
+    <livewire:toastr />
 
-    <div class="max-w-5xl mx-auto px-6 md:px-8 sm:py-16 py-8 min-h-screen">
+    <div class="max-w-5xl mx-auto px-6 md:px-8 sm:py-16 py-8">
         <h1 class="font-bold sm:text-3xl text-2xl text-center">Database Kasus Environmental Defender Yayasan Auriga</h1>
         <p class="text-center text-green-800 font-bold text-xl">(https://environmentaldefender.id)</p>
-        <div >
+    </div>
+        <div class="max-w-7xl mx-auto px-6">
             <livewire:map-database />
         </div>
+    <div class="max-w-5xl mx-auto px-6 md:px-8 ">
+
         <div class="w-full h-96">
             <livewire:jumlah-corban-component />
         </div>
-        <div class="flex justify-between space-x-4 mt-6 ">
-            <div class="w-6/12 h-96 bg-orange-500 flex items-center justify-center">
-                <p>Gender</p>
+        <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6 ">
+            <div class="sm:w-6/12 w-full border border-gray-400">
+                <livewire:gender-chart-component >
             </div>
-            <div class="w-6/12 h-96 bg-green-500 flex items-center justify-center">
-                <p>Tahun</p>
+            <div class="sm:w-6/12 w-full border border-gray-400 ">
+                <livewire:tahun-component />
             </div>
         </div>
         <div class="flex justify-between space-x-4 mt-6 ">

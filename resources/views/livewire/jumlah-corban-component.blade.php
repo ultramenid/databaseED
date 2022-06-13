@@ -1,5 +1,5 @@
 <div>
-    <div id="containerJumlahKorban" class="w-full h-96 relative mt-12"></div>
+    <div id="containerJumlahKorban" class="w-full h-96 relative mt-12 border border-gray-400"></div>
 </div>
 
 <script>
@@ -16,7 +16,6 @@ var korban = JSON.parse('<?php echo $korbans  ?>');
           chart: {
             id: 'bconduct',
             group: 'charts',
-            foreColor: 'gray',
             width: '100%',
             height: '350px',
 
