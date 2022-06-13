@@ -15,15 +15,17 @@
         </div>
     <div class="max-w-5xl mx-auto px-6 md:px-8 ">
 
-        <div class="w-full h-96">
-            <livewire:jumlah-corban-component />
+        <div class=" w-full border border-gray-400 mt-6">
+            <livewire:tahun-component />
+
         </div>
         <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6 ">
             <div class="sm:w-6/12 w-full border border-gray-400">
                 <livewire:gender-chart-component >
             </div>
             <div class="sm:w-6/12 w-full border border-gray-400 ">
-                <livewire:tahun-component />
+            <livewire:jumlah-corban-component />
+
             </div>
         </div>
         <div class="flex justify-between space-x-4 mt-6 ">

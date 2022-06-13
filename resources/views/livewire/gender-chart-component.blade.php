@@ -3,45 +3,67 @@
 </div>
 
 <script>
-    var options = {
-      chart: {
-        width: '100%',
-        type: 'donut',
-        toolbar: {
-         show: true
+   var options = {
+          series: [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
+          chart: {
+          height: '100%',
+          type: 'radialBar',
         },
-      },
-      title: {
-            text: 'Jumlah Gender',
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
+        plotOptions: {
+          radialBar: {
             offsetY: 0,
-            floating: false,
-
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 26,
+              size: '30%',
+              background: 'transparent',
+              image: undefined,
             },
-      labels: [
-        'Laki-Laki',
-        'Perempuan',
-        'Laki-Laki & Perempuan'
-      ],
-      series: [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
-      dataLabels: {
-        formatter: function (val, opts) {
-            return opts.w.config.series[opts.seriesIndex]
+            dataLabels: {
+              name: {
+                show: false,
+              },
+              value: {
+                show: false,
+              }
+            }
+          }
         },
-      },
-      legend: {
-          show:true,
-          position: 'bottom',
-          floating: false,
-          verticalAlign: 'bottom',
-          align:'center'
+        colors: ['#1ab7ea', '#0084ff', '#39539E'],
+        labels: ['Laki-Laki', 'Perempuan', 'Laki-Laki & Perempuan'],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '14px',
+          position: 'left',
+          offsetX: 15,
+          offsetY: 15,
+          labels: {
+            useSeriesColors: true,
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function(seriesName, opts) {
+            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+          },
+          itemMargin: {
+            vertical: 3
+          }
         },
-    }
-
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+                show: false
+            }
+          }
+        }]
+        };
 
         var chart = new ApexCharts(document.querySelector("#containergender"), options);
         chart.render();
+
 
 </script>
