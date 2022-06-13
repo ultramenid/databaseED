@@ -3,67 +3,77 @@
 </div>
 
 <script>
-   var options = {
-          series: [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
-          chart: {
-          height: '100%',
-          type: 'radialBar',
+    // var options = {
+    //       series: [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
+    //       chart: {
+    //       height: '100%',
+    //       type: 'radialBar',
+    //     },
+    //     plotOptions: {
+    //       radialBar: {
+    //         dataLabels: {
+    //           name: {
+    //             fontSize: '22px',
+    //           },
+    //           value: {
+    //             fontSize: '16px',
+    //           },
+    //           total: {
+    //             show: false,
+    //             label: 'Total',
+    //             formatter: function (w) {
+    //               // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+    //               return 249
+    //             }
+    //           }
+    //         }
+    //       }
+    //     },
+    //     labels: ['Laki-Laki', 'Perempuan', 'Laki-Laki & Perempuan'],
+    //     };
+
+    //     var chart = new ApexCharts(document.querySelector("#containergender"), options);
+    //     chart.render();
+    var options = {
+      chart: {
+        width: '100%',
+        type: 'donut',
+        toolbar: {
+         show: true
         },
-        plotOptions: {
-          radialBar: {
+      },
+
+      title: {
+            text: 'Jumlah Gender',
+            align: 'left',
+            margin: 10,
+            offsetX: 0,
             offsetY: 0,
-            startAngle: 0,
-            endAngle: 270,
-            hollow: {
-              margin: 26,
-              size: '30%',
-              background: 'transparent',
-              image: undefined,
+            floating: false,
+
             },
-            dataLabels: {
-              name: {
-                show: false,
-              },
-              value: {
-                show: false,
-              }
-            }
-          }
+      labels: [
+        'Laki-Laki',
+        'Perempuan',
+        'Laki-Laki & Perempuan'
+      ],
+      series: [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
+      dataLabels: {
+        formatter: function (val, opts) {
+            return opts.w.config.series[opts.seriesIndex]
         },
-        colors: ['#1ab7ea', '#0084ff', '#39539E'],
-        labels: ['Laki-Laki', 'Perempuan', 'Laki-Laki & Perempuan'],
-        legend: {
-          show: true,
-          floating: true,
-          fontSize: '14px',
-          position: 'left',
-          offsetX: 15,
-          offsetY: 15,
-          labels: {
-            useSeriesColors: true,
-          },
-          markers: {
-            size: 0
-          },
-          formatter: function(seriesName, opts) {
-            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
-          },
-          itemMargin: {
-            vertical: 3
-          }
+      },
+      legend: {
+          show:true,
+          position: 'bottom',
+          floating: false,
+          verticalAlign: 'bottom',
+          align:'center'
         },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-                show: false
-            }
-          }
-        }]
-        };
+    }
+
 
         var chart = new ApexCharts(document.querySelector("#containergender"), options);
         chart.render();
-
 
 </script>
