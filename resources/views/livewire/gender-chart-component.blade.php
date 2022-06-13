@@ -3,37 +3,7 @@
 </div>
 
 <script>
-    // var options = {
-    //       series: [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
-    //       chart: {
-    //       height: '100%',
-    //       type: 'radialBar',
-    //     },
-    //     plotOptions: {
-    //       radialBar: {
-    //         dataLabels: {
-    //           name: {
-    //             fontSize: '22px',
-    //           },
-    //           value: {
-    //             fontSize: '16px',
-    //           },
-    //           total: {
-    //             show: false,
-    //             label: 'Total',
-    //             formatter: function (w) {
-    //               // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-    //               return 249
-    //             }
-    //           }
-    //         }
-    //       }
-    //     },
-    //     labels: ['Laki-Laki', 'Perempuan', 'Laki-Laki & Perempuan'],
-    //     };
 
-    //     var chart = new ApexCharts(document.querySelector("#containergender"), options);
-    //     chart.render();
     var options = {
       chart: {
         width: '100%',
@@ -44,7 +14,7 @@
       },
 
       title: {
-            text: 'Jumlah Gender',
+            text: 'Jumlah Gender Korban',
             align: 'left',
             margin: 10,
             offsetX: 0,

@@ -29,11 +29,11 @@
             </div>
         </div>
         <div class="flex justify-between space-x-4 mt-6 ">
-            <div class="w-6/12 h-96 bg-pink-500 flex items-center justify-center">
+            <div class="sm:w-6/12 w-full border border-gray-400 ">
                 <p>Bentuk Ancaman</p>
             </div>
-            <div class="w-6/12 h-96 bg-purple-500 flex items-center justify-center">
-                <p>Sektor</p>
+            <div class="sm:w-6/12 w-full border border-gray-400 ">
+                <livewire:sektor-component />
             </div>
         </div>
         <livewire:table-database />
