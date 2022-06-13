@@ -30,7 +30,7 @@
         </div>
         <div class="flex justify-between space-x-4 mt-6 ">
             <div class="sm:w-6/12 w-full border border-gray-400 ">
-                <p>Bentuk Ancaman</p>
+                <livewire:bentuk-ancaman-component >
             </div>
             <div class="sm:w-6/12 w-full border border-gray-400 ">
                 <livewire:sektor-component />
