@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('eddatabase', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('tanggalkejadian');
+            $table->timestamp('tanggalkejadian')->nullable();
             $table->string('kasus');
             $table->string('provinsi');
             $table->string('kabkota');

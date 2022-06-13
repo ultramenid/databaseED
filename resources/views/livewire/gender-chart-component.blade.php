@@ -6,7 +6,7 @@
     var options = {
       chart: {
         width: '100%',
-        type: 'pie',
+        type: 'donut',
         toolbar: {
          show: true
         },
