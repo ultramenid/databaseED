@@ -10,7 +10,7 @@
         <h1 class="font-bold sm:text-3xl text-2xl text-center">Database Kasus Environmental Defender Yayasan Auriga</h1>
         <p class="text-center text-green-800 font-bold text-xl">(https://environmentaldefender.id)</p>
     </div>
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-5xl mx-auto px-6">
             <livewire:map-database />
         </div>
     <div class="max-w-5xl mx-auto px-6 md:px-8 ">
