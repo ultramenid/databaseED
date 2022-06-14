@@ -5,34 +5,15 @@
 <script>
 
     var options = {
-      chart: {
-        width: '100%',
-        type: 'donut',
-        toolbar: {
-         show: true
+          series:  [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
+          chart: {
+          type: 'donut',
         },
-      },
-
-      title: {
-            text: 'Jumlah Gender Korban',
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
-            offsetY: 0,
-            floating: false,
-
-            },
-      labels: [
+        labels: [
         'Laki-Laki',
         'Perempuan',
         'Laki-Laki & Perempuan'
       ],
-      series: [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
-      dataLabels: {
-        formatter: function (val, opts) {
-            return opts.w.config.series[opts.seriesIndex]
-        },
-      },
       legend: {
           show:true,
           position: 'bottom',
@@ -40,7 +21,18 @@
           verticalAlign: 'bottom',
           align:'center'
         },
-    }
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: '100%'
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
 
 
         var chart = new ApexCharts(document.querySelector("#containergender"), options);

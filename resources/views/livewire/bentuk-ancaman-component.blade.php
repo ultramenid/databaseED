@@ -17,7 +17,7 @@ var options = {
           pie: {
             startAngle: -90,
             endAngle: 90,
-            offsetY: 20
+            offsetY:0
           }
         },
         title: {
@@ -26,7 +26,7 @@ var options = {
         },
         grid: {
           padding: {
-            bottom: -90
+            bottom: 0
           }
         },
         labels: [
@@ -45,7 +45,7 @@ var options = {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: '100%'
             },
 
           }
