@@ -8,6 +8,9 @@
           series:  [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
           chart: {
           type: 'donut',
+          toolbar: {
+         show: true
+        },
         },
         labels: [
         'Laki-Laki',

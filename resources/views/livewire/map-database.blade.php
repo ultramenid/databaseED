@@ -26,7 +26,6 @@
 
         markers.on('clusterclick', function (a) {
             a.layer.zoomToBounds();
-            a.layer.openPopup();
         });
 
     </script>
