@@ -13,15 +13,20 @@
 
         @foreach ($markers as $item )
             var marker = L.marker(new L.LatLng({{$item->lat}}, {{$item->long}}), { title: "{{$item->kasus}}"});
+            marker.bindPopup("{{$item->kasus}}");
             markers.addLayer(marker);
+
 
         @endforeach
 
 
 
+
 		map.addLayer(markers);
+
         markers.on('clusterclick', function (a) {
             a.layer.zoomToBounds();
+            a.layer.openPopup();
         });
 
     </script>
