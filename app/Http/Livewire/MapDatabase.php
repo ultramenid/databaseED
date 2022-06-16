@@ -8,7 +8,7 @@ use Livewire\Component;
 class MapDatabase extends Component
 {
     public function getMarker(){
-        return  DB::table('eddatabase')->select('kasus','lat', 'long','tanggalkejadian','bentukancaman','korban', 'pelaku')->get();
+        return  DB::table('eddatabase')->select('kasus','lat', 'long','tanggalkejadian','bentukancaman','korban', 'pelaku', 'jumlahkorban', 'konflikdengan', 'namapelaku')->get();
 
     }
     public function render()
