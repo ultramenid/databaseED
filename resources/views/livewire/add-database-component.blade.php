@@ -191,7 +191,7 @@
                     <option value="Penahanan">Penahanan</option>
                     <option value="Meninggal Dunia">Meninggal Dunia</option>
                     <option value="Luka-Luka">Luka-Luka</option>
-                    <option value="Gangguan Sikologin">Gangguan Psikologis</option>
+                    <option value="Gangguan Sikologis">Gangguan Psikologis</option>
                     <option value="Deportasi">Deportasi</option>
                     <option value="Pengrusakan">Pengrusakan</option>
                     <option value="Pembakaran">Pembakaran</option>
@@ -216,7 +216,7 @@
 
                 <option value="Kriminalisasi">Kriminalisasi</option>
                 <option value="Ancaman Fisik">Ancaman Fisik</option>
-                <option value="Ancaman Psikologin/Non Fisik">Ancaman Psikologis/Non Fisik</option>
+                <option value="Ancaman Psikologis/Non Fisik">Ancaman Psikologis/Non Fisik</option>
             </select>
         </label>
     </div>
