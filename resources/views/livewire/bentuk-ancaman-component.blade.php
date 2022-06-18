@@ -32,7 +32,7 @@ var options = {
         labels: [
         'Kriminalisasi',
         'Ancaman Fisik',
-        'Ancaman Psikologin/Non Fisik'
+        'Ancaman Psikologis/Non Fisik'
       ],
       legend: {
           show:true,
