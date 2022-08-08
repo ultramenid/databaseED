@@ -114,13 +114,38 @@ class EditDatabaseComponent extends Component
     }
 
     public function getprovinsi(){
-        $sc = '%' . $this->chooseprovinsi . '%';
+        // $sc = '%' . $this->chooseprovinsi . '%';
 
-        return  DB::table('provinces')
-        ->select('id', 'name')
-        ->where('name', 'like',  $sc)
-        ->limit(15)
-        ->get();
+        // return  DB::table('provinces')
+        // ->select('id', 'name')
+        // ->where('name', 'like',  $sc)
+        // ->limit(15)
+        // ->get();
+        try {
+            $req = Http::get('http://129.150.48.143:8080/geoserver/simontini/wfs',
+            [
+                'service' => 'wfs',
+                'version' => '1.1.1',
+                'request' => 'GetFeature',
+                'typename' => 'simontini:Kecamatan_IDN',
+                'propertyName' => 'provinsi',
+                'cql_filter' => "provinsi LIKE '%". strtoupper($this->chooseprovinsi) ."%'",
+                'outputFormat' => 'application/json',
+            ]);
+            $response = json_decode($req, true);
+            // $arrUnique = array_unique($response['features'][0]['properties']['provinsi']);
+
+            $res = array();
+            foreach ($response['features'] as $each) {
+                if (isset($res[$each['properties']['provinsi']]))
+                    array_push($res[$each['properties']['provinsi']], $each['properties']['provinsi']);
+                else
+                    $res[$each['properties']['provinsi']] = array($each['properties']['provinsi']);
+                }
+            return array_slice($res, 0, 10);
+        } catch (\Throwable $th) {
+            return [];
+        }
 
     }
 
@@ -141,26 +166,78 @@ class EditDatabaseComponent extends Component
     }
 
     public function getKabkota(){
-        $sc = '%' . $this->choosekabkota . '%';
+        // $sc = '%' . $this->choosekabkota . '%';
 
-        return  DB::table('regencies')
-        ->select('id', 'name')
-        ->where('province_id', $this->idProvinsi)
-        ->where('name', 'like',  $sc)
-        ->limit(15)
-        ->get();
+        // return  DB::table('regencies')
+        // ->select('id', 'name')
+        // ->where('province_id', $this->idProvinsi)
+        // ->where('name', 'like',  $sc)
+        // ->limit(15)
+        // ->get();
+        try {
+            $req = Http::get('http://129.150.48.143:8080/geoserver/simontini/wfs',
+            [
+                'service' => 'wfs',
+                'version' => '1.1.1',
+                'request' => 'GetFeature',
+                'typename' => 'simontini:Kecamatan_IDN',
+                'propertyName' => 'provinsi,kab_kota',
+                'cql_filter' => "provinsi = '". $this->provinsi ."' AND kab_kota LIKE '%". strtoupper($this->choosekabkota) ."%'",
+                'outputFormat' => 'application/json',
+            ]);
+            $response = json_decode($req, true);
+            // $arrUnique = array_unique($response['features'][0]['properties']['provinsi']);
+
+            $res = array();
+            foreach ($response['features'] as $each) {
+                if (isset($res[$each['properties']['kab_kota']]))
+                    array_push($res[$each['properties']['kab_kota']], $each['properties']['kab_kota']);
+                else
+                    $res[$each['properties']['kab_kota']] = array($each['properties']['kab_kota']);
+                }
+            return array_slice($res, 0, 10);
+        } catch (\Throwable $th) {
+            return [];
+        }
 
     }
 
     public function getKecamatan(){
-        $sc = '%' . $this->choosekecamatan . '%';
+        // $sc = '%' . $this->choosekecamatan . '%';
 
-        return  DB::table('districts')
-        ->select('id', 'name')
-        ->where('regency_id', $this->idKabkota)
-        ->where('name', 'like',  $sc)
-        ->limit(15)
-        ->get();
+        // return  DB::table('districts')
+        // ->select('id', 'name')
+        // ->where('regency_id', $this->idKabkota)
+        // ->where('name', 'like',  $sc)
+        // ->limit(15)
+        // ->get();
+        try {
+            $req = Http::get('http://129.150.48.143:8080/geoserver/simontini/wfs',
+            [
+                'service' => 'wfs',
+                'version' => '1.1.1',
+                'request' => 'GetFeature',
+                'typename' => 'simontini:Kecamatan_IDN',
+                'propertyName' => 'provinsi,kab_kota,kecamatan,lat,long',
+                'cql_filter' => "provinsi = '".$this->provinsi."' AND  kab_kota = '".$this->kabkota."' AND  kecamatan LIKE '%". strtoupper($this->choosekecamatan) ."%'",
+                'outputFormat' => 'application/json',
+            ]);
+            $response = json_decode($req, true);
+            // $arrUnique = array_unique($response['features'][0]['properties']['provinsi']);
+
+            $res = array();
+            foreach ($response['features'] as $each) {
+                    array_push($res,[
+                        'lat' => $each['properties']['lat'],
+                        'long' => $each['properties']['long'],
+                        'kecamatan' => $each['properties']['kecamatan']
+                    ]);
+                }
+            // dd($res);
+            return array_slice($res, 0, 10);
+        } catch (\Throwable $th) {
+            return [];
+        }
     }
 
     public function getDesa(){
@@ -202,51 +279,32 @@ class EditDatabaseComponent extends Component
         $this->isPelaku = true;
     }
 
-    public function selectProvinsi($id,$name){
-        $this->provinsi = $name;
-        $this->idProvinsi = $id;
+    public function selectProvinsi($value){
+        $this->provinsi = $value;
         $this->isProvinsi = false;
         $this->kabkota = '. . . ';
         $this->kecamatan = '. . . ';
         // $this->desa = '. . . ';
 
     }
-    public function selectKabkota($id,$name){
-        $this->kabkota = $name;
-        $this->idKabkota = $id;
+    public function selectKabkota($value){
+        $this->kabkota = $value;
         $this->isKabkota = false;
         $this->kecamatan = '. . . ';
         // $this->desa = '. . . ';
     }
 
-    public function selectKecamatan($id,$name){
-        $this->kecamatan = $name;
-        $this->idKecamatan = $id;
+    public function selectKecamatan($lat, $long, $kecamatan){
+        $this->kecamatan = $kecamatan;
         $this->isKecamatan = false;
         // $this->desa='. . .';
-        try {
-            $req = Http::get('http://129.150.48.143:8080/geoserver/simontini/ows',
-            [
-                'service' => 'wfs',
-                'version' => '1.1.1',
-                'request' => 'GetFeature',
-                'typename' => 'simontini:Kecamatan_IDN',
-                'cql_filter' => "provinsi = '". $this->provinsi ."' and kab_kota = '". $this->kabkota. "' and kecamatan = '". $name. "'",
-                'outputFormat' => 'application/json',
-            ]);
-            $response = json_decode($req->getBody()->getContents(), true);
+        // dd($lat,$long, $kecamatan);
             // dd($response);
-            $this->long = $response['features'][0]['properties']['long'];
-            $this->lat = $response['features'][0]['properties']['lat'];
+            $this->long = $long;
+            $this->lat = $lat;
             $this->dispatchBrowserEvent('connected');
-        } catch (\Throwable $th) {
 
-            $message = 'Coordinates '.$name.' not found.';
-            $type = 'error'; //error, success
-            $this->emit('toast',$message, $type);
-            $this->dispatchBrowserEvent('deletemarker');
 
-        }
     }
 
     // public function selectDesa($id, $name){

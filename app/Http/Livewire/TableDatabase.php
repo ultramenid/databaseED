@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use App\Exports\UsersExport;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TableDatabase extends Component
 {
     use WithPagination;
+    use Exportable;
+
     // public $deleter = true;
     // public $deleteName, $deleteID;
     public $dataField = 'tanggalkejadian', $dataOrder = 'asc', $paginate = 10, $search = '';
@@ -26,8 +31,17 @@ class TableDatabase extends Component
         }
     }
 
+
+
+    public function exportExcel(){
+      return  Excel::download(new UsersExport, 'rawEDdatabase.xlsx');
+    }
+
     public function delete($id){
         $this->emit('deleteModal', $id);
+    }
+    public function updatedSearch(){
+        $this->resetPage();
     }
 
 

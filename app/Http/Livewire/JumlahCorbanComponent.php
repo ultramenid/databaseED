@@ -8,16 +8,16 @@ use Livewire\Component;
 class JumlahCorbanComponent extends Component
 {
     public function getJumlahKorban(){
-        $jumlah =  DB::table('eddatabase')
+        return  DB::table('eddatabase')
         ->selectRaw('YEAR(tanggalkejadian) as YEAR, sum(jumlahkorban) as korbans')
         ->groupBy('YEAR')
         ->get();
-        foreach($jumlah as $item){
-            $data['tanggal'][] = $item->YEAR;
-            $data['jumlahkorban'][] = $item->korbans;
-        }
-        // dd($bExecution);
-        return json_encode($data);
+        // foreach($jumlah as $item){
+        //     $data['tanggal'][] = $item->YEAR;
+        //     $data['jumlahkorban'][] = $item->korbans;
+        // }
+        // // dd($bExecution);
+        // return json_encode($data);
     }
 
     public function render()

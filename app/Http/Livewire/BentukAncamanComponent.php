@@ -9,8 +9,8 @@ class BentukAncamanComponent extends Component
 {
     public function getBentuk(){
         $jumlah =  DB::table('eddatabase')
-        ->selectRaw('SUM(bentukancaman="Kriminalisasi") as kriminalisasi, SUM(bentukancaman ="Ancaman Fisik") as ancamanfisik, SUM(bentukancaman = "Ancaman Psikologis/Non Fisik") as ancamannonfisik')
-        ->first();
+        ->selectRaw('DISTINCT bentukancaman, akibat')
+        ->get();
         // dd($jumlah);
         return $jumlah;
     }

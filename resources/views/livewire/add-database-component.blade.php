@@ -23,9 +23,9 @@
 
             @if ($isProvinsi)
             <div class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20"  >
-                <input   wire:model='chooseprovinsi' type="text" name="" id="" class="w-full mb-2 bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Provinsi. . .">
-                @foreach ($provincies as $item)
-                    <a wire:click="selectProvinsi({{$item->id }}, '{{$item->name}}')" class="text-white py-1 hover:bg-gray-700 px-4">{{$item->name}}</a>
+                <input   wire:model='chooseprovinsi' type="text" name="" id="" class="w-full mb-2  bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Provinsi. . .">
+                @foreach ($provincies as $key => $value)
+                    <a  wire:click="selectProvinsi('{{$value[0]}}')"  class="text-white py-1 hover:bg-gray-700 px-4">{{$value[0]}}</a>
                 @endforeach
             </div>
             @endif
@@ -42,8 +42,8 @@
             <div class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20"  >
                 <input   wire:model='choosekabkota' type="text" name="" id="" class="w-full mb-2 bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Kabupaten Kota. . .">
 
-                @foreach ($kabkotas as $item)
-                    <a wire:click="selectKabkota({{$item->id }}, '{{$item->name}}')" class="text-white py-1 hover:bg-gray-700 px-4">{{$item->name}}</a>
+                @foreach ($kabkotas as $key => $value)
+                    <a wire:click="selectKabkota('{{$value[0]}}')"  class="text-white py-1 hover:bg-gray-700 px-4">{{$value[0]}}</a>
                 @endforeach
 
             </div>
@@ -60,8 +60,8 @@
             @if ($isKecamatan)
             <div class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20" >
                 <input   wire:model='choosekecamatan' type="text" name="" id="" class="w-full mb-2 bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Kecamatan. . .">
-                @foreach ($kecamatans as $item)
-                    <a wire:click="selectKecamatan({{$item->id }}, '{{$item->name}}')" class="text-white py-1 hover:bg-gray-700 px-4">{{$item->name}}</a>
+                @foreach ($kecamatans as $key => $value)
+                    <a wire:click="selectKecamatan({{ $value['lat'] }},{{ $value['long'] }}, '{{$value['kecamatan']}}' )" class="text-white py-1 hover:bg-gray-700 px-4">{{$value['kecamatan']}}</a>
                 @endforeach
             </div>
             @endif

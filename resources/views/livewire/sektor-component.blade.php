@@ -1,6 +1,6 @@
 <div>
-    <div id="containersektor" class="w-full h-96 relative mt-12 "></div>
-</div>
+    <div id="containersektor" class="w-full h-96"></div>
+
 
 <script>
 var options = {
@@ -51,6 +51,17 @@ var options = {
           text: 'Sektor',
           align: 'left'
         },
+        dataLabels: {
+          enabled: true,
+          style: {
+            fontSize: '12px',
+          },
+          formatter: function(text, op) {
+            return [text, op.value]
+          },
+          offsetY: -4
+        },
+
         colors: [
           '#3B93A5',
           '#F7B844',
@@ -70,10 +81,12 @@ var options = {
             distributed: true,
             enableShades: false
           }
-        }
+        },
+
         };
 
         var chart = new ApexCharts(document.querySelector("#containersektor"), options);
         chart.render();
 
 </script>
+</div>
