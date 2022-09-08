@@ -11,7 +11,13 @@ class GenderChartComponent extends Component
         $jumlah =  DB::table('eddatabase')
         ->selectRaw('SUM(jeniskelamin="LAKI-LAKI") as laki, SUM(jeniskelamin ="PEREMPUAN") as perempuan, SUM(jeniskelamin = "LAKI-LAKI & PEREMPUAN") as lakiperempuan')
         ->first();
-        return $jumlah;
+
+            $data['laki'][] = $jumlah->laki;
+            $data['perempuan'][] = $jumlah->perempuan;
+            $data['lakiperempuan'][] = $jumlah->lakiperempuan;
+
+
+        return json_encode($data);
     }
     public function render()
     {

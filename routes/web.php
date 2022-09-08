@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LocalServiceController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -18,6 +19,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 //backend
 //if has session redirect to dashboard
+Route::get('/rest/test', [LocalServiceController::class, 'index']);
+Route::get('/rest/tahun', [LocalServiceController::class, 'getTahun']);
+Route::get('/rest/jumlahkorban', [LocalServiceController::class, 'getJumlahKorban']);
+Route::get('/rest/getbentuk', [LocalServiceController::class, 'getBentuk']);
+
 Route::group(['middleware' => 'checkSession'], function () {
     Route::get('/cms/dashboard', [DashboardController::class, 'index'])->name('login');
     Route::get('/cms/adddatabase', [DashboardController::class, 'addDatabase'])->name('addDb');

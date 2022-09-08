@@ -12,9 +12,17 @@ class UsersExport implements  FromCollection, WithHeadings
     /**
     * @return \Illuminate\Support\Collection
     */
+    private $start, $end;
+
+    public function __construct($start, $end)
+    {
+        $this->start = $start;
+        $this->end = $end;
+    }
     public function collection()
     {
         return DB::table('eddatabase')
+        ->whereBetween('tanggalkejadian', [$this->start, $this->end])
         ->get();
     }
     public function headings(): array

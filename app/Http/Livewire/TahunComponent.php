@@ -7,17 +7,33 @@ use Livewire\Component;
 
 class TahunComponent extends Component
 {
+    public $start = "2014-01-01", $end = "2022-12-31";
+    protected $listeners = ['filter' => 'setYear'];
+
+    public function setYear($start, $end){
+        $this->start = $start;
+        $this->end = $end;
+        $this->dispatchBrowserEvent('updateChart');
+
+    }
+
     public function getTahun(){
-        return DB::table('eddatabase')
+        $res =  DB::table('eddatabase')
         ->selectRaw('YEAR(tanggalkejadian) as YEAR, count(kasus) as jumlahkasus')
         ->groupBy('YEAR')
         ->get();
-        // foreach($jumlah as $item){
-        //     $data['tahun'][] = $item->YEAR;
-        //     $data['jumlahkasus'][] = $item->jumlahkasus;
-        // }
-        // // dd($jumlah);
-        // return json_encode($data);
+
+        $tahun = 0;
+        foreach($res as $item){
+            $data['tahun'][] = $item->YEAR;
+            $data['jumlahkasus'][] = $item->jumlahkasus;
+            $tahun += $item->jumlahkasus;
+            $data['tambahkasus'][] = $tahun;
+
+
+        }
+        // dd($data);
+        return json_encode($data);
     }
 
     public function render()

@@ -3,37 +3,39 @@
 
 
 <script>
+    var sektor = JSON.parse('<?php echo $sektors  ?>');
+    // console.log(sektor)
 var options = {
           series: [
           {
             data: [
               {
                 x: 'Lingkungan Hidup',
-                y: {{$sektors->lingkunganhidup}}
+                y: sektor.lingkunganhidup
               },
               {
                 x: 'Hutan',
-                y: {{$sektors->hutan}}
+                y: sektor.hutan
               },
               {
                 x: 'Kebun',
-                y: {{$sektors->kebun}}
+                y: sektor.kebun
               },
               {
                 x: 'Tambang',
-                y: {{$sektors->tambang}}
+                y: sektor.tambang
               },
               {
                 x: 'Energi',
-                y: {{$sektors->energi}}
+                y: sektor.energi
               },
               {
                 x: 'Tanah/Tanah Adat',
-                y: {{$sektors->tanahadat}}
+                y: sektor.tanahadat
               },
               {
                 x: 'Perairan dan Kelautan',
-                y: {{$sektors->perairan}}
+                y: sektor.perairan
               },
 
             ]
@@ -86,6 +88,45 @@ var options = {
         };
 
         var chart = new ApexCharts(document.querySelector("#containersektor"), options);
+        Livewire.on('updateSektor', dataUpdate => {
+            updated = JSON.parse(dataUpdate);
+            chart.updateSeries([{
+                data: [
+              {
+                x: 'Lingkungan Hidup',
+                y: updated.lingkunganhidup
+              },
+              {
+                x: 'Hutan',
+                y: updated.hutan
+              },
+              {
+                x: 'Kebun',
+                y: updated.kebun
+              },
+              {
+                x: 'Tambang',
+                y: updated.tambang
+              },
+              {
+                x: 'Energi',
+                y: updated.energi
+              },
+              {
+                x: 'Tanah/Tanah Adat',
+                y: updated.tanahadat
+              },
+              {
+                x: 'Perairan dan Kelautan',
+                y: updated.perairan
+              },
+
+            ]
+                },
+
+            ])
+            console.log(updated)
+        })
         chart.render();
 
 </script>

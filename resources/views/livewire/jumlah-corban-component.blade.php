@@ -3,10 +3,13 @@
 
 
 <script>
-            // console.log(tahuns);
+document.addEventListener('livewire:load', function () {
+
+          var korbans = JSON.parse('<?php echo $korbans  ?>');
+          console.log(korbans);
             var options = {
                 series: [{
-                data: [@foreach ($korbans as $name) '{{$name->korbans}}', @endforeach],
+                data: korbans.jumlahkorban,
                 name: 'Jumlah Korban' ,
             }],
               chart: {
@@ -33,7 +36,7 @@
               enabled: false
             },
             xaxis: {
-              categories: [@foreach ($korbans as $name) '{{$name->YEAR}}', @endforeach],
+              categories: korbans.tahun,
             },
             tooltip: {
                 shared: true,
@@ -51,6 +54,22 @@
             };
 
             var chart = new ApexCharts(document.querySelector("#containerJumlahKorban"), options);
+            Livewire.on('updateJumlahKorban', dataUpdate => {
+            updated = JSON.parse(dataUpdate);
+            chart.updateOptions( {
+                xaxis: {
+                categories: updated.tahun
+                }
+            });
+            chart.updateSeries([{
+                data: updated.jumlahkorban,
+                name: 'Jumlah Kasus' ,
+                type: 'column'
+                }
+            ])
+            console.log(updated)
+        })
             chart.render();
+        })
     </script>
     </div>

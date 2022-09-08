@@ -14,9 +14,24 @@ class BentukAncamanComponent extends Component
         // dd($jumlah);
         return $jumlah;
     }
+
+    public function getBentukTest(){
+        $jumlah =  DB::table('eddatabase')
+        ->selectRaw('DISTINCT bentukancaman, akibat')
+        ->get();
+        // dd($jumlah);
+        // return $jumlah;
+        foreach($jumlah as $item){
+            $setdata = array($item->bentukancaman, $item->akibat, getScore($item->bentukancaman, $item->akibat));
+            $data[] = $setdata;
+        }
+        // dd($data);
+        return json_encode($data);
+    }
     public function render()
     {
         $bentuks = $this->getBentuk();
-        return view('livewire.bentuk-ancaman-component',compact('bentuks'));
+        $bentuktest = $this->getBentukTest();
+        return view('livewire.bentuk-ancaman-component',compact('bentuks', 'bentuktest'));
     }
 }

@@ -3,33 +3,25 @@
 
 
 <script>
-// var tahuns = JSON.parse('<?php echo $tahuns  ?>');
+document.addEventListener('livewire:load', function () {
+
+    var tahuns = JSON.parse('<?php echo $tahuns  ?>');
         // console.log(tahuns);
-        var options = {
+    var options = {
           series: [{
-          data: [@foreach ($tahuns as $name) '{{$name->jumlahkasus}}', @endforeach],
+          data: tahuns.jumlahkasus,
           name: 'Jumlah Kasus' ,
           type: 'column'
         },
         {
           name: 'Akumulasi Kasus',
-          type: 'line',
-          data: [
-            @php
-                $tahun = 0;
-                foreach($tahuns as $name){
-
-                    $tahun += $name->jumlahkasus;
-                    echo $tahun.',';
-                }
-
-            @endphp
-          ],
+          type: 'area',
+          data: tahuns.tambahkasus,
         }],
           chart: {
           type: 'line',
           height: '100%',
-          stacked: false
+          stacked: true
         },
 
         title: {
@@ -54,7 +46,7 @@
           width: [1, 1, 4]
         },
         xaxis: {
-          categories: [@foreach ($tahuns as $name) '{{$name->YEAR}}', @endforeach],
+          categories: tahuns.tahun,
         },
         tooltip: {
             shared: true,
@@ -70,9 +62,27 @@
             fontSize: '12px',
           }
         },
-        };
+    };
 
         var chart = new ApexCharts(document.querySelector("#containerTahun"), options);
+
+        Livewire.on('updateTahun', dataUpdate => {
+            updated = JSON.parse(dataUpdate);
+            chart.updateSeries([{
+                data: updated.jumlahkasus,
+                name: 'Jumlah Kasus' ,
+                type: 'column'
+                },
+                {
+                name: 'Akumulasi Kasus',
+                type: 'area',
+                data: updated.tambahkasus,
+                }
+            ])
+            // console.log(updated)
+        })
         chart.render();
+
+    })
 </script>
 </div>

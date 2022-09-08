@@ -56,43 +56,75 @@ var options = {
         chart.render();
 </script> --}}
 <script>
-    google.charts.load('current', {'packages':['sankey']});
-    google.charts.setOnLoadCallback(drawChart);
+document.addEventListener('livewire:load', function () {
+    var bentuk = JSON.parse('<?php echo $bentuktest  ?>');
+    // console.log(bentuk)
 
-    function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'From');
-        data.addColumn('string', 'To');
-        data.addColumn('number', 'Total');
-        data.addRows([
-            ['Bentuk Ancaman', 'Akibat', 0],
-            @foreach ($bentuks as $name) [ '{{$name->bentukancaman}}', '{{$name->akibat}}', {{getScore($name->bentukancaman, $name->akibat)}} ], @endforeach
-        ]);
+    var H = Highcharts;
 
-        var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
-                  '#cab2d6', '#ffff99', '#1f78b4', '#33a02c'];
-        // Sets chart options.
-        var options = {
-            width:'100%',
-            animation:{
-                startup: true,
-                duration: 1000,
-                easing: 'in',
-            },
-            sankey: {
-                node: {
-                colors: colors
-                },
-                link: {
-                colorMode: 'gradient',
-                colors: colors
+    H.seriesTypes.sankey.prototype.pointAttribs = function(point, state) {
+        var opacity = this.options.linkOpacity,
+            color = point.color;
+
+        if (state) {
+            opacity = this.options.states[state].linkOpacity || opacity;
+            color = this.options.states[state].color || point.color;
+        }
+
+        return {
+            fill: point.isNode ?
+                color : {
+                    linearGradient: {
+                        x1: 0,
+                        x2: 1,
+                        y1: 0,
+                        y2: 0
+                    },
+                    stops: [
+                        [0, H.color(color).setOpacity(opacity).get()],
+                        [1, H.color(point.toNode.color).setOpacity(opacity).get()]
+                    ]
                 }
-            }
         };
+    }
+    const chart = Highcharts.chart('containerbentukancaman', {
 
-        // Instantiates and draws our chart, passing in some options.
-        var chart = new google.visualization.Sankey(document.getElementById('containerbentukancaman'));
-        chart.draw(data, options);
-      }
+        title: {
+            text: 'Bentuk Ancaman dan Akibat'
+        },
+        accessibility: {
+            point: {
+                valueDescriptionFormat: '{index}. {point.from} to {point.to}, {point.weight}.'
+            }
+        },
+        series: [{
+            keys: ['from', 'to', 'weight'],
+            data: bentuk,
+            type: 'sankey',
+            name: 'Bentuk Ancaman dan Akibat'
+
+        }],
+        exporting: {
+            buttons: {
+            contextButton: {
+                menuItems: ["printChart",
+                            "separator",
+                            "downloadPNG",
+                            "downloadJPEG",
+                            "separator",
+                            "downloadCSV",
+                            "openInCloud"]
+            }
+            }
+        }
+    });
+
+    Livewire.on('updateSankey', dataUpdate => {
+        updated = JSON.parse(dataUpdate);
+        // chart.redraw();
+        chart.series[0].setData(updated);
+        // console.log(updated)
+    })
+})
 </script>
 </div>

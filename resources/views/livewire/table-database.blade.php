@@ -21,20 +21,15 @@
                     </svg>
                 </div>
             </th>
-            <th wire:click='sortingField("kasus")' class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer sm:w-3/12 w-11/12">
+            <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-3/12 w-11/12">
                 <div class="flex space-x-1">
                     <a>Kasus</a>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 my-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                     </svg>
                  </div>
              </th>
-             <th wire:click='sortingField("kronologi")' class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer sm:w-5/12 w-11/12">
+             <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-5/12 w-11/12">
                 <div class=" space-x-1 hidden sm:flex" >
                     <a >Kronologi</a>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 my-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                     </svg>
+
                  </div>
              </th>
 

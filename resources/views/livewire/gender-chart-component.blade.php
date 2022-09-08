@@ -3,9 +3,14 @@
 
 
 <script>
-
+document.addEventListener('livewire:load', function () {
+    var genders = JSON.parse('<?php echo $genders  ?>');
+    var laki = parseInt(genders.laki)
+    var perempuan = parseInt(genders.perempuan)
+    var lakiperempuan = parseInt(genders.lakiperempuan)
+    // console.log(lakiperempuan)
     var options = {
-          series:  [{{$genders->laki}}, {{$genders->perempuan}}, {{$genders->lakiperempuan}}],
+          series:  [laki, perempuan, lakiperempuan],
           chart: {
           type: 'donut',
           toolbar: {
@@ -44,7 +49,18 @@
 
 
         var chart = new ApexCharts(document.querySelector("#containergender"), options);
+        Livewire.on('updateGender', dataUpdate => {
+            updated = JSON.parse(dataUpdate);
+            // console.log()
+            var laki = parseInt(updated.laki)
+            var perempuan = parseInt(updated.perempuan)
+            var lakiperempuan = parseInt(updated.lakiperempuan)
+            chart.updateSeries([
+                laki, perempuan,lakiperempuan
+            ])
+            console.log(updated)
+        })
         chart.render();
-
+    })
 </script>
 </div>
