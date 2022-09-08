@@ -30,6 +30,7 @@ class TableDatabase extends Component
 
     protected $listeners = ['updateTable' => 'setFilter'];
     public function setFilter($start, $end){
+        $this->resetPage();
         $this->start = $start;
         $this->end = $end;
     }
