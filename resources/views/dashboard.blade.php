@@ -3,6 +3,7 @@
 
 @section('content')
     @include('partials.backendHeader')
+    @include('partials.backendNav')
     <livewire:deleter-modal />
     <livewire:toastr />
 

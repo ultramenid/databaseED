@@ -7,18 +7,21 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        $title = 'Dashboard - ED Database';
-        return view('dashboard', compact('title'));
+        $title = 'Dashboard Kasus - ED Database';
+        $nav = 'kasus';
+        return view('dashboard', compact('title', 'nav'));
     }
 
     public function addDatabase(){
-        $title = 'Add database';
-        return view('addDatabase', compact('title'));
+        $title = 'Add database kasus';
+        $nav = 'kasus';
+        return view('addDatabase', compact('title', 'nav'));
     }
 
     public function editDatabase($id){
         $id = $id;
-        $title = 'Edit Database';
-        return view('editDatabase', compact('title','id'));
+        $title = 'Edit Database kasus';
+        $nav = 'kasus';
+        return view('editDatabase', compact('title','id','nav'));
     }
 }

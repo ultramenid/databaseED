@@ -1,4 +1,4 @@
-<div class="fixed z-20 inset-x-0 top-0 flex flex-col items-center justify-center px-4 py-6 pointer-events-none sm:p-6 sm:justify-start space-y-2"  >
+<div class="fixed z-20 inset-x-0 top-28 flex flex-col items-center justify-center px-4 py-6 pointer-events-none sm:p-6 sm:justify-start space-y-2"  >
     @forelse ($notification as $key => $value)
         <div class="max-w-sm w-full bg-black  shadow-lg rounded-lg pointer-events-auto" >
             <div class="rounded-lg shadow-sm overflow-hidden ">

@@ -1,6 +1,6 @@
 <div class="max-w-5xl mx-auto py-12 px-4">
     <livewire:toastr />
-    <h1 class="font-bold sm:text-5xl text-4xl">Tambah database</h1>
+    <h1 class="font-bold sm:text-5xl text-4xl py-12">Tambah database Kasus</h1>
     <div class="">
         <h1 class="text-xl   text-gray-900 mt-8 mb-1">Tanggal Kejadian</h1>
         <div class=" sm:w-4/12 w-full" wire:ignore x-init="flatpickr('#tglkejadian', { enableTime: false,dateFormat: 'Y-m-d', disableMobile: 'true'});">

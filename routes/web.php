@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AhliController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocalServiceController;
 use App\Http\Controllers\LoginController;
@@ -17,17 +18,23 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//backend
-//if has session redirect to dashboard
+
+// service
 Route::get('/rest/test', [LocalServiceController::class, 'index']);
 Route::get('/rest/tahun', [LocalServiceController::class, 'getTahun']);
 Route::get('/rest/jumlahkorban', [LocalServiceController::class, 'getJumlahKorban']);
 Route::get('/rest/getbentuk', [LocalServiceController::class, 'getBentuk']);
 
+
+//backend
+//if has session redirect to dashboard
 Route::group(['middleware' => 'checkSession'], function () {
     Route::get('/cms/dashboard', [DashboardController::class, 'index'])->name('login');
     Route::get('/cms/adddatabase', [DashboardController::class, 'addDatabase'])->name('addDb');
     Route::get('/cms/editdatabase/{id}', [DashboardController::class, 'editDatabase']);
+    Route::get('/cms/dbahli', [AhliController::class, 'index'])->name('ahli');
+    Route::get('/cms/addahli', [AhliController::class, 'addahli'])->name('addahli');
+    Route::get('/cms/editahli/{id}', [AhliController::class, 'editahli'])->name('editahli');
 
 
 

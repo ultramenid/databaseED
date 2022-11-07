@@ -5,5 +5,5 @@
     @include('partials.backendHeader')
     @include('partials.backendNav')
 
-    <livewire:add-database-component />
+    <livewire:add-ahli-component />
 @endsection
