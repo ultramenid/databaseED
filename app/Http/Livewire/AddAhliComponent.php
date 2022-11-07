@@ -135,11 +135,6 @@ class AddAhliComponent extends Component
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;
-        }elseif($this->stasi == ''){
-            $message = 'Stasi is required';
-            $type = 'error'; //error, success
-            $this->emit('toast',$message, $type);
-            return;
         }elseif($this->provinsi == ''){
             $message = 'Provinsi is required';
             $type = 'error'; //error, success
