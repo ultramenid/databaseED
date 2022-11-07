@@ -52,6 +52,13 @@
                          </div>
                      </th>
 
+                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-11/12">
+                        <div class=" space-x-1 " >
+                            <a >Keahlian</a>
+
+                         </div>
+                     </th>
+
 
 
                     <th class=" text-right bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider w-1/12">
@@ -62,26 +69,29 @@
             <tbody class="bg-white  divide-y divide-gray-200 ">
                 @forelse ($databases as $item)
                 <tr>
-                    <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
+                    <td class="px-6 py-4 break-words text-xs font-bold text-newgray-700 ">
                         <a>{{$item->provinsi}}</a>
                     </td>
-                    <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
+                    <td class="px-6 py-4 break-words text-xs font-bold text-newgray-700 ">
                         <a href="{{ url('/cms/editahli/'.$item->id) }}">{{ $item->nama }}</a>
                     </td>
-                    <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700">
+                    <td class="px-6 py-4 break-words text-xs font-bold text-newgray-700">
                         <a >{{$item->gelar}}</a>
                     </td>
-                    <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700">
+                    <td class="px-6 py-4 break-words text-xs font-bold text-newgray-700">
                         <a >{{$item->kriteriaahli}}</a>
                     </td>
-                    <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700">
+                    <td class="px-6 py-4 break-words text-xs font-bold text-newgray-700">
                         <a >{{$item->jabatan}}</a>
                     </td>
-                    <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700">
+                    <td class="px-6 py-4 break-words text-xs font-bold text-newgray-700">
                         <a >{{$item->afliasi}}</a>
                     </td>
+                    <td class="px-6 py-4 break-words text-xs font-bold text-newgray-700">
+                        <a >{{$item->keahlian}}</a>
+                    </td>
 
-                    <td colspan="2" class=" break-words text-sm text-gray-500  px-6">
+                    <td colspan="2" class=" break-words text-xs text-gray-500  px-6">
                         <div class="relative flex justify-end" x-data="{ open: false }">
 
                             <button class=" focus:outline-none" @click="open = true">

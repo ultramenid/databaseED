@@ -23,7 +23,7 @@ class TableAhliComponent extends Component
         $sc = '%' . $this->search . '%';
         try {
             return  DB::table('dbahli')
-                        ->select('provinsi', 'nama', 'gelar', 'id', 'kriteriaahli', 'jabatan', 'afliasi')
+                        ->select('provinsi', 'nama', 'gelar', 'id', 'kriteriaahli', 'jabatan', 'afliasi', 'keahlian')
                         ->where('nama', 'like', $sc)
                         ->orderBy($this->dataField, $this->dataOrder)
                         ->paginate($this->paginate);
