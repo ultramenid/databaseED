@@ -1,6 +1,6 @@
 <div>
     @if ($deleter)
-    <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400"  x-show="open" x-transition x-cloak style="display: none !important">
+    <div class="fixed z-50 inset-0 overflow-y-auto ease-out duration-400"  x-show="open" x-transition x-cloak style="display: none !important">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 transition-opacity">
                 <div class="absolute inset-0 bg-gray-100 dark:bg-newgray-900 opacity-50"></div>

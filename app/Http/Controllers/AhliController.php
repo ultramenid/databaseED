@@ -18,9 +18,10 @@ class AhliController extends Controller
         return view('addahli', compact('title', 'nav'));
     }
 
-    public function editahli(){
+    public function editahli($id){
         $title = 'edit Dashboard Ahli - ED Database';
         $nav = 'ahli';
-        return view('editahli', compact('title', 'nav'));
+        $id = $id;
+        return view('editahli', compact('title', 'nav', 'id'));
     }
 }

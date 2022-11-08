@@ -20,7 +20,7 @@
         x-transition:leave="transition ease-in duration-500"
         x-transition:leave-start="opacity-0"
         x-transition:leave-end="opacity-100"
-        class="z-20 absolute right-0 w-36 p-2 mt-2 space-y-2 text-gray-600 bg-gray-300 rounded-md shadow-md "
+        class="z-50 absolute right-0 w-36 p-2 mt-2 space-y-2 text-gray-600 bg-gray-300 rounded-md shadow-md "
         aria-label="submenu"
       >
         <li class="flex">

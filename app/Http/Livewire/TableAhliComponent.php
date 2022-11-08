@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class TableAhliComponent extends Component
 {
     use WithPagination;
+    public $deleteName, $deleteID, $deleter;
     public $search, $dataOrder = 'desc', $dataField = 'id', $paginate = 10;
 
     public function sortingField($field){
@@ -30,6 +31,31 @@ class TableAhliComponent extends Component
         } catch (\Throwable $th) {
             return [];
         }
+    }
+
+    public function closeDelete(){
+        $this->deleter = false;
+        $this->deleteName = null;
+        $this->deleteID = null;
+    }
+    public function delete($id){
+
+        //load data to delete function
+        $dataDelete = DB::table('dbahli')->where('id', $id)->first();
+        $this->deleteName = $dataDelete->nama;
+        $this->deleteID = $dataDelete->id;
+
+        $this->deleter = true;
+    }
+    public function deleting($id){
+        DB::table('dbahli')->where('id', $id)->delete();
+
+        $message = 'Successfully delete ahli';
+        $type = 'success'; //error, success
+        $this->emit('toast',$message, $type);
+
+
+        $this->closeDelete();
     }
 
     public function render()

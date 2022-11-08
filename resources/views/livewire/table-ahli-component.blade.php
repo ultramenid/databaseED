@@ -1,5 +1,8 @@
 <div>
-
+    <div x-data="{ open: @entangle('deleter') }">
+        @include('partials.deleterModal')
+    </div>
+    <livewire:toastr />
     <div class="flex sm:flex-row flex-col sm:space-y-0 space-y-4 justify-between py-4 mt-12 items-center">
         {{-- <div class="px-2 bg-black py-2 text-white cursor-pointer" wire:loading.remove wire:click="exportExcel">Export Excel</div> --}}
         <button wire:loading wire:target='exportExcel' type="button" class="px-2 bg-black py-2 text-white cursor-not-allowed w-24">
