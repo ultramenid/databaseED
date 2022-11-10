@@ -140,6 +140,11 @@ class AddAhliComponent extends Component
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;
+        }elseif($this->catatan == ''){
+            $message = 'Catatan is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
         }
 
 
