@@ -16,6 +16,7 @@
         <livewire:table-ahli-component />
     </div>
 
+    @if (session('role_id') == 0)
     <div>
         <div class="fixed z-30 sm:bottom-10 sm:right-12 bottom-6 right-4 cursor-pointer " >
             <a href="{{url('/cms/addahli')}}">
@@ -26,6 +27,7 @@
                 </div>
             </a>
         </div>
+    @endif
     </div>
 
 @endsection

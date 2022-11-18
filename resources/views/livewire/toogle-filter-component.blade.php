@@ -1,5 +1,5 @@
 <div x-data="{filter: @entangle('isFilter')}">
-    <div class="fixed z-20 sm:bottom-28 bottom-20  sm:right-12  right-4 cursor-pointer " wire:click='setToogle'>
+    <div class="fixed z-20  @if(session('role_id') > 0) sm:bottom-10 sm:right-12 @else sm:bottom-28 bottom-20  @endif   sm:right-12  right-4 cursor-pointer " wire:click='setToogle'>
         <a>
             <div class="sm:px-4 px-2 sm:py-4 py-2 border border-white bg-black rounded-full  flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
