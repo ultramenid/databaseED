@@ -30,11 +30,11 @@ Route::get('/rest/getbentuk', [LocalServiceController::class, 'getBentuk']);
 //if has session redirect to dashboard
 Route::group(['middleware' => 'checkSession'], function () {
     Route::get('/cms/dashboard', [DashboardController::class, 'index'])->name('login');
+    Route::get('/cms/dbahli', [AhliController::class, 'index'])->name('ahli');
 
     Route::group(['middleware' => 'cekUser'], function () {
         Route::get('/cms/adddatabase', [DashboardController::class, 'addDatabase'])->name('addDb');
         Route::get('/cms/editdatabase/{id}', [DashboardController::class, 'editDatabase']);
-        Route::get('/cms/dbahli', [AhliController::class, 'index'])->name('ahli');
         Route::get('/cms/addahli', [AhliController::class, 'addahli'])->name('addahli');
         Route::get('/cms/editahli/{id}', [AhliController::class, 'editahli'])->name('editahli');
     });
