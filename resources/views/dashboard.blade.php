@@ -35,7 +35,9 @@
         <div class="w-full border border-gray-400 mt-6 px-6 py-6">
             <livewire:sektor-component />
         </div>
+        @if (session('role_id') == 0)
         <livewire:table-database />
+        @endif
     </div>
 
     <livewire:toogle-filter-component />
