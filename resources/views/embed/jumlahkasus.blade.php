@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 @section('content')
 <div>
-    <div id="containerTahun" class="w-full h-106 object-cover"></div>
+    <div id="containerTahun" class="w-full h-screen object-cover" ></div>
 
 
 <script>
