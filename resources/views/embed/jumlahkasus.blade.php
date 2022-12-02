@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 @section('content')
 <div>
-    <div id="containerTahun" class="w-full h-screen"></div>
+    <div id="containerTahun" class="w-full h-screen object-cover"></div>
 
 
 <script>
@@ -20,13 +20,14 @@
           data: tahuns.tambahkasus,
         }],
           chart: {
-          type: 'line',
-          height: '100%',
-          stacked: true,
-          background: '#112F3B',
-          toolbar: {
+            type: 'line',
+            height: '600',
+            stacked: true,
+            background: '#112F3B',
+            toolbar: {
             show: false
-            }
+            },
+
         },
 
 
@@ -46,14 +47,14 @@
           categories: tahuns.tahun,
           labels: {
             style: {
-              colors: '#fff',
+              colors: '#32737E',
           },
           },
         },
         yaxis: {
           labels: {
             style: {
-              colors: '#fff',
+              colors: '#32737E',
           },
           },
         },
@@ -67,12 +68,11 @@
         dataLabels: {
           enabled: true,
           style: {
-            fontSize: '12px',
             color: '#112F3B'
           }
         },
         legend: {
-            offsetY: 0,
+            offsetY: 6,
             labels: {
                 colors: '#fff',
                 useSeriesColors: false
