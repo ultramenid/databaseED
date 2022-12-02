@@ -1,13 +1,13 @@
 @extends('layouts.backend')
 @section('content')
 <div>
-    <div id="containerTahun" class="w-full h-screen object-cover"></div>
+    <div id="containerTahun" class="w-full h-full object-cover"></div>
 
 
 <script>
 
     var tahuns = JSON.parse('<?php echo $tahuns  ?>');
-        console.log(tahuns);
+        // console.log(tahuns);
     var options = {
           series: [{
           data: tahuns.jumlahkasus,
@@ -21,7 +21,7 @@
         }],
           chart: {
             type: 'line',
-            height: '600',
+            height: '100%',
             stacked: true,
             background: '#112F3B',
             toolbar: {
