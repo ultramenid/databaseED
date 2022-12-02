@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 @section('content')
 <div>
-    <div id="containerTahun" class="w-full h-screen relative"></div>
+    <div id="containerTahun" class="w-full h-screen"></div>
 
 
 <script>
@@ -16,24 +16,20 @@
         },
         {
           name: 'Akumulasi Kasus',
-          type: 'area',
+          type: 'line',
           data: tahuns.tambahkasus,
         }],
           chart: {
           type: 'line',
           height: '100%',
-          stacked: true
+          stacked: true,
+          background: '#112F3B',
+          toolbar: {
+            show: false
+            }
         },
 
-        title: {
-            text: 'Jumlah Kasus',
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
-            offsetY: 0,
-            floating: false,
 
-            },
         plotOptions: {
           bar: {
             borderRadius: 4,
@@ -48,6 +44,18 @@
         },
         xaxis: {
           categories: tahuns.tahun,
+          labels: {
+            style: {
+              colors: '#fff',
+          },
+          },
+        },
+        yaxis: {
+          labels: {
+            style: {
+              colors: '#fff',
+          },
+          },
         },
         tooltip: {
             shared: true,
@@ -55,14 +63,21 @@
             theme: "dark",
 
           },
-        colors: ["#47A025","#183A37"],
+        colors: ["#47A025","orange"],
         dataLabels: {
           enabled: true,
-          offsetX: -6,
           style: {
             fontSize: '12px',
+            color: '#112F3B'
           }
         },
+        legend: {
+            offsetY: 0,
+            labels: {
+                colors: '#fff',
+                useSeriesColors: false
+            },
+        }
     };
 
         var chart = new ApexCharts(document.querySelector("#containerTahun"), options);
