@@ -50,12 +50,13 @@ var options = {
         chart: {
             width: '100%',
           height: '100%',
-          type: 'treemap'
+          type: 'treemap',
+          background: '#112F3B',
+          toolbar: {
+            show: false
+            },
         },
-        title: {
-          text: 'Sektor',
-          align: 'left'
-        },
+
         dataLabels: {
           enabled: true,
           style: {
@@ -64,7 +65,6 @@ var options = {
           formatter: function(text, op) {
             return [text, op.value]
           },
-          offsetY: -4
         },
 
         colors: [
@@ -84,6 +84,7 @@ var options = {
         plotOptions: {
           treemap: {
             distributed: true,
+            useFillColorAsStroke: true,
             enableShades: false
           }
         },
