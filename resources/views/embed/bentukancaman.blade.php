@@ -38,9 +38,15 @@ document.addEventListener('livewire:load', function () {
         };
     }
     const chart = Highcharts.chart('containerbentukancaman', {
-
+        chart: {
+            backgroundColor: '#112F3B',
+        },
+        exporting: { enabled: false },
         title: {
-            text: 'Bentuk Ancaman dan Akibat'
+            text: 'Bentuk Ancaman dan Akibat',
+            style: {
+                color: '#32737E',
+            },
         },
         accessibility: {
             point: {
@@ -54,19 +60,7 @@ document.addEventListener('livewire:load', function () {
             name: 'Bentuk Ancaman dan Akibat'
 
         }],
-        exporting: {
-            buttons: {
-            contextButton: {
-                menuItems: ["printChart",
-                            "separator",
-                            "downloadPNG",
-                            "downloadJPEG",
-                            "separator",
-                            "downloadCSV",
-                            "openInCloud"]
-            }
-            }
-        }
+
     });
 
 
