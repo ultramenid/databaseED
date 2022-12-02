@@ -88,7 +88,12 @@ var options = {
             enableShades: false
           }
         },
+        tooltip: {
+            shared: true,
+            intersect: false,
+            theme: "dark",
 
+          },
         };
 
         var chart = new ApexCharts(document.querySelector("#containersektor"), options);
