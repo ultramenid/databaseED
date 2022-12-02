@@ -24,6 +24,11 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
     <script src="{{ asset('js/bing.js') }}"></script>
+    <script src="{{ asset('js/highchart.js') }}"></script>
+    <script src="{{ asset('js/sankey.js') }}"></script>
+    <script src="{{ asset('js/exporting.js') }}"></script>
+    <script src="{{ asset('js/export-data.js') }}"></script>
+    <script src="{{ asset('js/accessibility.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -32,11 +37,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css" type="text/css">
     <script src="https://unpkg.com/leaflet-gesture-handling"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/sankey.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    {{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
+    {{-- <script src="https://code.highcharts.com/modules/sankey.js"></script> --}}
+    {{-- <script src="https://code.highcharts.com/modules/exporting.js"></script> --}}
+    {{-- <script src="https://code.highcharts.com/modules/export-data.js"></script> --}}
+    {{-- <script src="https://code.highcharts.com/modules/accessibility.js"></script> --}}
 </head>
 <body class="selection-bg dark:selection-bg ">
 
