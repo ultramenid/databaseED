@@ -12,25 +12,29 @@
         <p class="text-center text-green-800 font-bold text-xl">(https://environmentaldefender.id)</p>
     </div>
         <div class="max-w-5xl mx-auto px-6">
+            {{-- <iframe src="http://localhost:8000/embed/map" frameborder="0" class="w-full h-106"></iframe> --}}
             <livewire:map-database />
         </div>
     <div class="max-w-5xl mx-auto px-6 md:px-8 ">
 
         <div class=" w-full border border-gray-400 mt-6">
             <livewire:tahun-component />
+            {{-- <iframe src="http://localhost:8000/embed/jumlahkasus" frameborder="0" class="w-full h-106"></iframe> --}}
 
         </div>
         <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6 ">
             <div class="sm:w-6/12 w-full border border-gray-400">
+                {{-- <iframe src="http://localhost:8000/embed/gender" frameborder="0" class="w-full h-full"></iframe> --}}
                 <livewire:gender-chart-component >
             </div>
             <div class="sm:w-6/12 w-full border border-gray-400 ">
-            <livewire:jumlah-corban-component />
-
+                {{-- <iframe src="http://localhost:8000/embed/jumlahkorban" frameborder="0" class="w-full h-full"></iframe> --}}
+                <livewire:jumlah-corban-component />
             </div>
         </div>
         <div class="w-full border border-gray-400 mt-6 px-6 py-6">
-            <livewire:bentuk-ancaman-component />
+                {{-- <iframe src="http://localhost:8000/embed/bentukancaman" frameborder="0" class="w-full h-106"></iframe> --}}
+                <livewire:bentuk-ancaman-component />
         </div>
         <div class="w-full border border-gray-400 mt-6 px-6 py-6">
             <livewire:sektor-component />

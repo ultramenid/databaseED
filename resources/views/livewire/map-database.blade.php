@@ -9,10 +9,10 @@
 
         var dark = L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
             attribution: 'EnvirontmentalDefender | Auriga'
-        }).addTo(map);
+        });
         var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'EnvirontmentalDefender | Auriga'
-        }).addTo(map);
+        });
 
         var planet = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png', {
         attribution: 'EnvirontmentalDefender | Auriga'

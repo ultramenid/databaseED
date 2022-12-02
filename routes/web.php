@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AhliController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmbedController;
 use App\Http\Controllers\LocalServiceController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,12 @@ Route::get('/rest/test', [LocalServiceController::class, 'index']);
 Route::get('/rest/tahun', [LocalServiceController::class, 'getTahun']);
 Route::get('/rest/jumlahkorban', [LocalServiceController::class, 'getJumlahKorban']);
 Route::get('/rest/getbentuk', [LocalServiceController::class, 'getBentuk']);
-
+Route::get('/embed/map', [EmbedController::class, 'map']);
+Route::get('/embed/jumlahkasus', [EmbedController::class, 'jumlahkasus']);
+Route::get('/embed/gender', [EmbedController::class, 'gender']);
+Route::get('/embed/jumlahkorban', [EmbedController::class, 'jumlahkorban']);
+Route::get('/embed/bentukancaman', [EmbedController::class, 'bentukancaman']);
+Route::get('/embed/sektor', [EmbedController::class, 'sektor']);
 
 //backend
 //if has session redirect to dashboard
