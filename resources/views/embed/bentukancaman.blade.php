@@ -41,6 +41,7 @@ document.addEventListener('livewire:load', function () {
         chart: {
             backgroundColor: '#112F3B',
         },
+        credits:false,
         exporting: { enabled: false },
         title: {
             text: 'Bentuk Ancaman dan Akibat',
