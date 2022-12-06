@@ -8,80 +8,74 @@
 
     var tahuns = JSON.parse('<?php echo $tahuns  ?>');
         // console.log(tahuns);
-    var options = {
-          series: [{
-          data: tahuns.jumlahkasus,
-          name: 'Jumlah Kasus' ,
-          type: 'column'
-        },
-        {
-          name: 'Akumulasi Kasus',
-          type: 'line',
-          data: tahuns.tambahkasus,
-        }],
-          chart: {
-            type: 'line',
-            height: '100%',
-            stacked: true,
-            background: '#112F3B',
-            toolbar: {
-            show: false
-            },
+            Highcharts.chart('containerTahun', {
+                chart: {
+                zoomType: 'xy',
+                backgroundColor: '#112F3B',
+                },
+                exporting: { enabled: false },
+                title: {
+                    text : ''
+                },
 
-        },
+                xAxis: [{
+                    categories: [2014,2015,2016,2017,2018,2019,2020,2021,2022],
+                    crosshair: true
+                }],
+                yAxis: [{ // Primary yAxis
+
+                    title: {
+                        enabled: false,
+                    }
+                }, { // Secondary yAxis
+                    title: {
+                        enabled: false,
+                    },
+                    labels: {
+                        enabled: false,
+                    },
+
+                }],
+                plotOptions: {
+                        spline: { // has to say spline here
+                            dataLabels: {
+                                enabled: true
+                            },
+
+                        },
+                        column: { // has to say spline here
+                            dataLabels: {
+                                enabled: true,
+                                y: 999999999999,
+                                style: {
+                                    color: 'white'
+                                },
+                            },
+                        }
+                    },
+                tooltip: {
+                    shared: true
+                },
+                legend: {
+                    labelFormat: '<span style="color:white">{name}</span>'
+                },
+                credits:false,
+                colors: ['#E6B851', '#88B3E7'],
+                series: [{
+                    name: 'Jumlah Kasus',
+                    type: 'column',
+                    yAxis: 1,
+                    data: [5,5,2,14,4,8,14,24,26],
 
 
-        plotOptions: {
-          bar: {
-            borderRadius: 4,
-            horizontal: false,
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          width: [1, 1, 4]
-        },
-        xaxis: {
-          categories: tahuns.tahun,
-          labels: {
-            style: {
-              colors: '#32737E',
-          },
-          },
-        },
-        yaxis: {
-          labels: {
-            style: {
-              colors: '#32737E',
-          },
-          },
-        },
-        tooltip: {
-            shared: true,
-            intersect: false,
-            theme: "dark",
+                }, {
+                    name: 'Akumulasi Kasus',
+                    type: 'spline',
+                    data: [5,10,12,26,30,38,52,76,102],
 
-          },
-        colors: ["#47A025","orange"],
-        dataLabels: {
-          enabled: true,
-          style: {
-            color: '#112F3B'
-          }
-        },
-        legend: {
-            offsetY: 6,
-            labels: {
-                colors: '#fff',
-                useSeriesColors: false
-            },
-        }
-    };
+                }]
+            });
 
-        var chart = new ApexCharts(document.querySelector("#containerTahun"), options);
-        chart.render();
 
 
 </script>
