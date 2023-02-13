@@ -291,7 +291,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 var BING_KEY = "AiS2zkF1f18b_dtsyRlvXj8By-QwkV4byzpFTA9sOjS8q4ELKjz2g09rIiIuJ3BD"
-                var map = L.map('map').setView([0.7893, 117.9213],4);
+                var map = L.map('map',{gestureHandling: true}).setView([0.7893, 117.9213],4);
 
 
                 var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

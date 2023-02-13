@@ -1,6 +1,6 @@
 <div class="max-w-5xl mx-auto py-12 px-4">
     <livewire:toastr />
-    <h1 class="font-bold sm:text-5xl text-4xl py-12">Edit database Ahli</h1>
+    <h1 class="font-bold sm:text-5xl text-4xl py-12">Edit database kasus</h1>
     <div class="">
         <h1 class="text-xl   text-gray-900 mt-8 mb-1">Tanggal Kejadian</h1>
         <div class=" sm:w-4/12 w-full" wire:ignore x-init="flatpickr('#tglkejadian', { enableTime: false,dateFormat: 'Y-m-d', disableMobile: 'true'});">
@@ -291,7 +291,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 var BING_KEY = "AiS2zkF1f18b_dtsyRlvXj8By-QwkV4byzpFTA9sOjS8q4ELKjz2g09rIiIuJ3BD"
-                var map = L.map('map').setView([0.7893, 117.9213],4);
+                var map = L.map('map',{gestureHandling: true}).setView([0.7893, 117.9213],4);
 
 
                 var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

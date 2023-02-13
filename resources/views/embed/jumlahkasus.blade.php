@@ -19,7 +19,7 @@
                 },
 
                 xAxis: [{
-                    categories: [2014,2015,2016,2017,2018,2019,2020,2021,2022],
+                    categories: tahuns.tahun,
                     crosshair: true
                 }],
                 yAxis: [{ // Primary yAxis
@@ -65,13 +65,13 @@
                     name: 'Jumlah Kasus',
                     type: 'column',
                     yAxis: 1,
-                    data: [5,5,2,14,4,8,14,24,26],
+                    data: tahuns.jumlahkasus,
 
 
                 }, {
                     name: 'Akumulasi Kasus',
                     type: 'spline',
-                    data: [5,10,12,26,30,38,52,76,102],
+                    data: tahuns.tambahkasus,
 
                 }]
             });
