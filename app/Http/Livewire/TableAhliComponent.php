@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Exports\AhliExport;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TableAhliComponent extends Component
 {
@@ -20,6 +22,8 @@ class TableAhliComponent extends Component
         $this->resetPage();
     }
 
+    public function exportExcel(){
+        return  Excel::download(new AhliExport, 'RawDbAhli.xlsx');}
     public function getDatabase(){
         $sc = '%' . $this->search . '%';
         try {
