@@ -50,6 +50,7 @@ class TableDatabase extends Component
 
 
 
+    // https://laravel-excel.com/
     public function exportExcel(){
       return  Excel::download(new UsersExport($this->start, $this->end), 'rawEDdatabase.xlsx');
     }

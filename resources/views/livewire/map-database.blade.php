@@ -18,6 +18,18 @@
         attribution: 'EnvirontmentalDefender | Auriga'
         }).addTo(map);
 
+
+        var poly = L.tileLayer.betterWms('https://aws.simontini.id/geoserver/wms', {
+            layers: 'kpa:Provinsibaru',
+            transparent: true,
+            format: 'image/png',
+        }).addTo(map);
+
+
+        var overlay = {
+            'Batas Administrasi' : poly
+        }
+
         var baseLayers = {
         'Esri Dark' : dark,
         OpenstreetMap : osm,
@@ -25,7 +37,7 @@
         };
 
 
-        L.control.layers(baseLayers).addTo(map);
+        L.control.layers(baseLayers, overlay).addTo(map);
 
         var markers = L.markerClusterGroup();
 
@@ -61,6 +73,9 @@
                                     '<div class="flex space-x-2">'+
                                         '<a style="color:black" class="font-semibold">Sektor: </a> <a style="color:black">'+feature.properties.sektor+'</a>'+
                                     '</div>'+
+                                    '<div class="flex space-x-2">'+
+                                        '<a style="color:black" class="font-semibold">Lokasi: </a> <a style="color:black">'+feature.properties.provinsi+', '+feature.properties.kabkota+', '+feature.properties.kecamatan+'</a>'+
+                                    '</div>'+
                                     '</div>'+
                                 '</div>');
                             }else{
@@ -83,6 +98,9 @@
                                     '</div>'+
                                     '<div class="flex space-x-2">'+
                                         '<a style="color:black" class="font-semibold">Sektor: </a> <a style="color:black">'+feature.properties.sektor+'</a>'+
+                                    '</div>'+
+                                    '<div class="flex space-x-2">'+
+                                        '<a style="color:black" class="font-semibold">Lokasi: </a> <a style="color:black">'+feature.properties.provinsi+', '+feature.properties.kabkota+', '+feature.properties.kecamatan+'</a>'+
                                     '</div>'+
                                     '</div>'+
                                 '</div>');

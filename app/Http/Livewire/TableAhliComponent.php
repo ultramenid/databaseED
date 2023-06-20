@@ -22,8 +22,11 @@ class TableAhliComponent extends Component
         $this->resetPage();
     }
 
+    // https://laravel-excel.com/
     public function exportExcel(){
-        return  Excel::download(new AhliExport, 'RawDbAhli.xlsx');}
+        return  Excel::download(new AhliExport, 'RawDbAhli.xlsx');
+    }
+
     public function getDatabase(){
         $sc = '%' . $this->search . '%';
         try {

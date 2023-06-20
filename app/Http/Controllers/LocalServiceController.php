@@ -9,7 +9,7 @@ class LocalServiceController extends Controller
 {
     public function getMarker(){
         $data =  DB::table('eddatabase')
-        ->select('kasus','lat', 'long','akibat','bentukancaman','korban', 'pelaku', 'jumlahkorban', 'konflikdengan', 'namapelaku','sektor')
+        ->select('kasus','lat', 'long','akibat','bentukancaman','korban', 'pelaku', 'jumlahkorban', 'konflikdengan', 'namapelaku','sektor', 'provinsi', 'kabkota', 'kecamatan')
         ->get();
 
 
@@ -37,6 +37,9 @@ class LocalServiceController extends Controller
                             'sektor' => $value['sektor'],
                             'lat' => $value['lat'],
                             'long' => $value['long'],
+                            'provinsi' => $value['provinsi'],
+                            'kabkota' => $value['kabkota'],
+                            'kecamatan' => $value['kecamatan'],
                         ),
                     );
             };
