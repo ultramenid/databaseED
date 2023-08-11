@@ -11,7 +11,7 @@ document.addEventListener('livewire:load', function () {
                 chart: {
                 zoomType: 'xy',
                 },
-                exporting: { enabled: false },
+                exporting: { enabled: true },
                 title: {
                     text : ''
                 },
@@ -54,8 +54,9 @@ document.addEventListener('livewire:load', function () {
                 tooltip: {
                     shared: true
                 },
+
                 legend: {
-                    labelFormat: '<span style="color:white">{name}</span>'
+                    labelFormat: '<span style="color:black">{name}</span>'
                 },
                 credits:false,
                 colors: ['#E6B851', '#88B3E7'],
