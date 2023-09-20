@@ -17,84 +17,93 @@
         <table class="w-full divide-y divide-gray-200  rounded-lg  border border-gray-100">
             <thead class="">
                 <tr >
-                    <th wire:click='sortingField("provinsi")'  class="bg-gray-50 px-6 py-4    text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-4/12">
-                        <div class=" space-x-1 " >
-                            <a >Provinsi</a>
-
+                    <th wire:click='sortingField("tahun")'  class="bg-gray-50 px-6 py-4    text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-4/12">
+                        <div class="flex space-x-1  cursor-pointer" >
+                            <a >Tahun</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 my-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
                          </div>
                      </th>
-                    <th wire:click='sortingField("nama")' class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer sm:w-2/12 w-4/12">
+                    <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer sm:w-1/12 w-4/12">
                        <div class="flex space-x-1">
-                           <a>Nama</a>
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 my-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                            </svg>
+                           <a>Nama </a>
+
                         </div>
                     </th>
-                    <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-4/12">
+                    <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-4/12">
                         <div class="flex space-x-1">
-                            <a>Gelar</a>
+                            <a>Status </a>
                          </div>
                      </th>
                      <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-11/12">
                         <div class=" space-x-1 " >
-                            <a >Kriteria Ahli</a>
+                            <a >Nomor Perkara</a>
 
                          </div>
                      </th>
+                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-11/12">
+                        <div class=" space-x-1 " >
+                            <a >Wilayah</a>
+
+                         </div>
+                     </th>
+                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-11/12">
+                        <div class=" space-x-1 " >
+                            <a >Sektor</a>
+
+                         </div>
+                     </th>
+
                      <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-11/12">
                         <div class=" space-x-1 " >
-                            <a >Jabatan</a>
+                            <a >Nilai Kerugian </a>
 
                          </div>
                      </th>
-                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-11/12">
+                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-5/12 w-11/12">
                         <div class=" space-x-1 " >
-                            <a >Afliasi</a>
+                            <a >Dakwaan </a>
 
                          </div>
                      </th>
 
-                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-11/12">
-                        <div class=" space-x-1 " >
-                            <a >Keahlian</a>
+                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-11/12">
 
-                         </div>
                      </th>
-
-
-
-                    <th class=" text-right bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider w-1/12">
-
-                    </th>
                 </tr>
             </thead>
             <tbody class="bg-white  divide-y divide-gray-200 ">
                 @forelse ($databases as $item)
                 <tr>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700 ">
-                        <a>{{$item->provinsi}}</a>
+                        <a>{{$item->tahun}}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700 ">
-                        <a href="{{ url('/cms/editahli/'.$item->id) }}">{{ $item->nama }}</a>
+                        <a href="{{ url('/cms/editsda/'.$item->id) }}">{{ $item->namaterdakwa }}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->gelar}}</a>
+                        <a >{{$item->statusterdakwa}}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->kriteriaahli}}</a>
+                        <a >{{$item->nomorperkara}}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->jabatan}}</a>
+                        <a >{{$item->wilayah}}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->afliasi}}</a>
+                        <a >{{$item->sektor}}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->keahlian}}</a>
+                        <a >{{$item->nilaikerugian}}</a>
                     </td>
+                    <td class="px-6 py-4 break-words text-xs  text-newgray-700">
+                        <a >{{$item->dakwaan}}</a>
+                    </td>
+
+
                     @if (session('role_id') == 0)
-                    <td colspan="2" class=" break-words text-xs text-gray-500  px-6">
+                    <td colspan="2" class=" break-words text-xs text-gray-500  px-6 relative">
                         <div class="relative flex justify-end" x-data="{ open: false }">
 
                             <button class=" focus:outline-none" @click="open = true">
@@ -104,11 +113,11 @@
                             </button>
 
                             <ul
-                                class="absolute mt-6  right-0 bg-white rounded-lg shadow-lg block w-24 z-10"
+                                class="absolute mt-6  right-0 bg-white rounded-lg shadow-lg block w-24 z-20"
                                 x-show.transition="open"
                                 @click.away="open = false"
                                 x-cloak style="display: none !important">
-                                <a data-turbolinks="false" href="{{ url('/cms/editahli/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 " @click.away="open = false">Edit</li></a>
+                                <a data-turbolinks="false" href="{{ url('/cms/editsda/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 " @click.away="open = false">Edit</li></a>
                                 <li class="block hover:bg-gray-200 cursor-pointer  py-1 mb-2 px-4 "  wire:click="delete({{ $item->id }})" @click.away="open = false">Delete</li>
                             </ul>
                         </div>

@@ -10,7 +10,7 @@
     </button>
     <input class="sm:w-52 w-full mb-4 py-2 border-gray-500 border px-2 focus:outline-none" wire:model='search'>
 </div>
-<div class="overflow overflow-x-auto">
+<div class="">
     <table class="w-full divide-y divide-gray-200  rounded-lg   border border-gray-100">
         <thead class="">
             <tr >
@@ -50,16 +50,16 @@
         <tbody class="bg-white  divide-y divide-gray-200 ">
             @forelse ($databases as $item)
             <tr>
-                <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
+                <td class="px-6 py-4 break-words text-sm  text-newgray-700 ">
                     <a>{{ \Carbon\Carbon::parse($item->tanggalkejadian)->format('d M Y')}}</a>
                 </td>
-                <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
+                <td class="px-6 py-4 break-words text-sm  text-newgray-700 ">
                     <a>{{$item->provinsi}}</a>
                 </td>
-                <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 ">
+                <td class="px-6 py-4 break-words text-sm  text-newgray-700 ">
                     <a href="{{ url('/cms/editdatabase/'.$item->id) }}">{{ $item->kasus }}</a>
                 </td>
-                <td class="px-6 py-4 break-words text-sm font-bold text-newgray-700 sm:block hidden">
+                <td class="px-6 py-4 break-words text-sm  text-newgray-700 sm:block hidden">
                     <a >{{ substr($item->kronologi,0,140).'...'  }}</a>
                 </td>
 

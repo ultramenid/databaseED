@@ -9,6 +9,10 @@
                 <a href="{{url('/cms/dbahli')}}" class=" px-0.5  @if($nav == 'ahli' )   text-black  @endif    cursor-pointer" >Database Ahli</a>
             </div>
 
+            <div class="hover:bg-gray-200  hover:px-2 py-3 rounded @if($nav == 'sda' )border-b-2   border-newgray-900 @endif ">
+                <a href="{{url('/cms/dbsda')}}" class=" px-0.5  @if($nav == 'sda' )   text-black  @endif    cursor-pointer" >Database Kasus SDA</a>
+            </div>
+
         </nav>
     </div>
 </div>
