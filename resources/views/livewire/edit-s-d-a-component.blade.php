@@ -202,7 +202,7 @@
         <h1 class="   text-gray-900  mb-1">File Putusan</h1>
         <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='umafile' placeholder="upload. . . ">
         @if($mafile)
-        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$ptfile) }}">Putusan Pengadilan Tinggi </a>
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$ptfile) }}">Putusan Mahkamah Agung </a>
         @endif
     </div>
     <div class="mt-6" x-data="{count:0}">
