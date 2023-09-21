@@ -42,7 +42,7 @@
     <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6">
         <div class="sm:w-6/12 w-full">
             <h1 class="text-xl   text-gray-900  mb-1">Nomor Perkara</h1>
-            <input  type="number" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='nomorperkara' placeholder="Nomor Perkara. . . ">
+            <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='nomorperkara' placeholder="Nomor Perkara. . . ">
 
         </div>
         <div class="sm:w-6/12 w-full" >
