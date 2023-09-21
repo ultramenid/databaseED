@@ -64,26 +64,41 @@ class AddSDAComponent extends Component
     }
 
     public function uploadPN(){
-        $file = $this->pnfile->store('public/files/lampiran');
-        $foto = $this->pnfile->hashName();
+        if($this->pnfile){
+            $file = $this->pnfile->store('public/files/lampiran');
+            $foto = $this->pnfile->hashName();
 
 
-        return $foto;
+            return $foto;
+        }else{
+            return null;
+        }
+
     }
     public function uploadPT(){
-        $file = $this->ptfile->store('public/files/lampiran');
-        $foto = $this->ptfile->hashName();
+        if($this->ptfile){
+            $file = $this->ptfile->store('public/files/lampiran');
+            $foto = $this->ptfile->hashName();
 
 
-        return $foto;
+            return $foto;
+        }else{
+            return null;
+        }
+
     }
 
     public function uploadMa(){
-        $file = $this->mafile->store('public/files/lampiran');
-        $foto = $this->mafile->hashName();
+        if($this->mafile){
+            $file = $this->mafile->store('public/files/lampiran');
+            $foto = $this->mafile->hashName();
 
 
-        return $foto;
+            return $foto;
+        }else{
+            return null;
+        }
+
     }
 
     public function storeDatabase(){
@@ -124,6 +139,7 @@ class AddSDAComponent extends Component
                 'kaidahhukum' => $this->kaidahhukum,
                 'tglupdate' => Carbon::now('Asia/Jakarta')
             ]);
+            redirect()->to('/cms/dbsda');
         }
     }
 
