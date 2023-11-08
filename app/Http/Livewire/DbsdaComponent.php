@@ -38,6 +38,31 @@ class DbsdaComponent extends Component
             return [];
         }
     }
+
+    public function closeDelete(){
+        $this->deleter = false;
+        $this->deleteName = null;
+        $this->deleteID = null;
+    }
+    public function delete($id){
+
+        //load data to delete function
+        $dataDelete = DB::table('dbkasussda')->where('id', $id)->first();
+        $this->deleteName = $dataDelete->namaterdakwa;
+        $this->deleteID = $dataDelete->id;
+
+        $this->deleter = true;
+    }
+    public function deleting($id){
+        DB::table('dbkasussda')->where('id', $id)->delete();
+
+        $message = 'Successfully delete SDA';
+        $type = 'success'; //error, success
+        $this->emit('toast',$message, $type);
+
+
+        $this->closeDelete();
+    }
     public function render()
     {
         // dd($this->getSDA());
