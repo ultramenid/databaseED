@@ -26,6 +26,7 @@ Route::get('/rest/test', [LocalServiceController::class, 'index']);
 Route::get('/rest/tahun', [LocalServiceController::class, 'getTahun']);
 Route::get('/rest/jumlahkorban', [LocalServiceController::class, 'getJumlahKorban']);
 Route::get('/rest/getbentuk', [LocalServiceController::class, 'getBentuk']);
+Route::get('/rest/getkasus/', [LocalServiceController::class, 'getCountKasus']);
 Route::get('/embed/map', [EmbedController::class, 'map']);
 Route::get('/embed/jumlahkasus', [EmbedController::class, 'jumlahkasus']);
 Route::get('/embed/gender', [EmbedController::class, 'gender']);

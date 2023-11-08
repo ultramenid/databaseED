@@ -8,7 +8,7 @@ document.addEventListener('livewire:load', function () {
     var laki = parseInt(genders.laki)
     var perempuan = parseInt(genders.perempuan)
     var lakiperempuan = parseInt(genders.lakiperempuan)
-    // console.log(lakiperempuan)
+    // console.log(genders)
     var options = {
           series:  [laki, perempuan, lakiperempuan],
           chart: {

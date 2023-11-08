@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 class EmbedController extends Controller
 {
     public function map(){
+        $data = $this->getMap();
         $title = 'Embed map';
-        return view('embed.map', compact('title'));
+        return view('embed.map', compact('title', 'data'));
     }
     public function jumlahkorban(){
         $title = 'Embed jumlah korban';
@@ -116,6 +117,20 @@ class EmbedController extends Controller
 
 
         // dd($data);
+        return json_encode($data);
+    }
+
+    public function getMap(){
+        $jumlah=  DB::table('eddatabase')
+        ->selectRaw('provinsi, count(kasus) as kasus')
+        ->groupBy('provinsi')
+        ->get();
+
+        $data = array();
+        foreach($jumlah as $item){
+            $data[$item->provinsi] = $item->kasus;
+        }
+        // dd($bExecution);
         return json_encode($data);
     }
 }

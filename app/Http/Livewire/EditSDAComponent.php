@@ -171,7 +171,9 @@ class EditSDAComponent extends Component
         // dd($this->checkPNFile());
         if($this->manualValidation()){
 
-            DB::table('dbkasussda')->update([
+            DB::table('dbkasussda')
+            ->where('id', $this->idSDA)
+            ->update([
                 'tglupdate' => Carbon::now('Asia/Jakarta'),
                 'tahun' => $this->tahun,
                 'namaterdakwa' => $this->namaterdakwa,

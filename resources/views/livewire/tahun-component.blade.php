@@ -72,7 +72,7 @@ document.addEventListener('livewire:load', function () {
                     type: 'spline',
                     data: tahuns.tambahkasus,
 
-                }]
+                }],
             });
         Livewire.on('updateTahun', dataUpdate => {
             updated = JSON.parse(dataUpdate);

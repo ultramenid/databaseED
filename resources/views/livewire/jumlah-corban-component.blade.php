@@ -28,7 +28,7 @@ document.addEventListener('livewire:load', function () {
                 },
             plotOptions: {
               bar: {
-                borderRadius: 4,
+                borderRadius: 0,
                 horizontal: true,
               }
             },

@@ -98,4 +98,19 @@ class LocalServiceController extends Controller
         dd($data);
         // return json_encode($data);
     }
+
+    public function getCountKasus(){
+        // $jumlah = DB::table('eddatabase')->selectRaw('DISTINCT provinsi')->count('kasus');
+        $jumlah=  DB::table('eddatabase')
+        ->selectRaw('provinsi, count(kasus) as kasus')
+        ->groupBy('provinsi')
+        ->get();
+
+
+        foreach($jumlah as $item){
+            $data['provinsi'][] = array($item->provinsi, $item->kasus);
+        }
+        // dd($bExecution);
+        return json_encode($data);
+    }
 }
