@@ -1,0 +1,224 @@
+<?php
+
+namespace App\Http\Livewire;
+
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+
+class AddGugatanComponent extends Component
+{
+    use WithFileUploads;
+    public $provinsi = '. . .', $chooseprovinsi, $isProvinsi;
+    public $tahun, $statuseksekusi, $namapenggugat, $namatergugat, $nomorperkara, $wilayah, $jeniskasus, $sektor, $nilaikerugian, $dakwaan;
+    public $gantirugi, $pemulihan, $lainya;
+    public $pngantirugi, $pnpemulihan, $pnlainya, $pnfile;
+    public $ptgantirugi, $ptpemulihan, $ptlainya, $ptfile;
+    public $magantirugi, $mapemulihan, $malainya, $mafile;
+    public $pkmagantirugi, $pkmapemulihan, $pkmalainya, $pkmafile;
+    public $kaidahhukum, $proses;
+
+
+    public function toogleProvinsi(){
+        // $this->provincies = $this->getprovinsi();
+        $this->isProvinsi =! $this->isProvinsi;
+    }
+
+    public function getprovinsi(){
+
+        try {
+            $req = Http::get('http://129.150.48.143:8080/geoserver/simontini/wfs',
+            [
+                'service' => 'wfs',
+                'version' => '1.1.1',
+                'request' => 'GetFeature',
+                'typename' => 'simontini:Kecamatan_IDN',
+                'propertyName' => 'provinsi',
+                'cql_filter' => "provinsi LIKE '%". strtoupper($this->chooseprovinsi) ."%'",
+                'outputFormat' => 'application/json',
+            ]);
+            $response = json_decode($req, true);
+            // $arrUnique = array_unique($response['features'][0]['properties']['provinsi']);
+
+            $res = array();
+            foreach ($response['features'] as $each) {
+                if (isset($res[$each['properties']['provinsi']]))
+                    array_push($res[$each['properties']['provinsi']], $each['properties']['provinsi']);
+                else
+                    $res[$each['properties']['provinsi']] = array($each['properties']['provinsi']);
+                }
+            return array_slice($res, 0, 10);
+        } catch (\Throwable $th) {
+            return [];
+        }
+
+
+
+    }
+
+    public function selectProvinsi($value){
+        // dd($value);
+        $this->provinsi = $value;
+        $this->isProvinsi = false;
+        // $this->desa = '. . . ';
+
+    }
+
+    public function uploadPN(){
+        if($this->pnfile){
+            $file = $this->pnfile->store('public/files/lampiran');
+            $foto = $this->pnfile->hashName();
+
+
+            return $foto;
+        }else{
+            return null;
+        }
+
+    }
+    public function uploadPT(){
+        if($this->ptfile){
+            $file = $this->ptfile->store('public/files/lampiran');
+            $foto = $this->ptfile->hashName();
+
+
+            return $foto;
+        }else{
+            return null;
+        }
+
+    }
+
+    public function uploadMa(){
+        if($this->mafile){
+            $file = $this->mafile->store('public/files/lampiran');
+            $foto = $this->mafile->hashName();
+
+
+            return $foto;
+        }else{
+            return null;
+        }
+
+    }
+
+    public function uploadPKMa(){
+        if($this->pkmafile){
+            $file = $this->pkmafile->store('public/files/lampiran');
+            $foto = $this->pkmafile->hashName();
+
+
+            return $foto;
+        }else{
+            return null;
+        }
+
+    }
+
+    public function storeDatabase(){
+        if($this->manualValidation()){
+            DB::table('dbkasusperdata')->insert([
+                'tahun' => $this->tahun,
+                'statuseksekusi' => $this->statuseksekusi,
+                'namapenggugat' => $this->namapenggugat,
+                'namatergugat' => $this->namatergugat,
+                'nomorperkara' => $this->nomorperkara,
+                'wilayah' => $this->provinsi,
+                'jeniskasus' => $this->jeniskasus,
+                'sektor' => $this->sektor,
+                'nilaikerugian' => $this->nilaikerugian,
+                'dakwaan' => $this->dakwaan,
+                'gantirugi' => $this->gantirugi,
+                'pemulihan' => $this->pemulihan,
+                'lainnya' => $this->lainya,
+                'pngantirugi' => $this->pngantirugi,
+                'pnpemulihan' => $this->pnpemulihan,
+                'pnlainya' => $this->pnlainya,
+                'pnfile'  => $this->uploadPN(),
+                'ptgantirugi' => $this->ptgantirugi,
+                'ptpemulihan' => $this->ptpemulihan,
+                'ptlainya' => $this->ptlainya,
+                'ptfile' => $this->uploadPT(),
+                'magantirugi' => $this->magantirugi,
+                'mapemulihan' => $this->mapemulihan,
+                'malainya' => $this->malainya,
+                'mafile' =>  $this->uploadMa(),
+                'pkmagantirugi' => $this->pkmagantirugi,
+                'pkmapemulihan' => $this->pkmapemulihan,
+                'pkmalainya' => $this->pkmalainya,
+                'pkmafile' => $this->uploadPKMa(),
+                'kaidahhukum' => $this->kaidahhukum,
+                'proses' => $this->proses,
+                'created_at' => Carbon::now('Asia/Jakarta')
+            ]);
+            redirect()->to('cms/gugatanperdata');
+        }
+    }
+
+
+    public function render(){
+        $provincies= $this->getprovinsi();
+        return view('livewire.add-gugatan-component', compact('provincies'));
+    }
+    public function manualValidation(){
+        if($this->tahun == ''){
+            $message = 'Tahun is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->provinsi === '. . .') {
+            $message = 'Provinsi is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->namapenggugat == '') {
+            $message = 'Nama Penggugat is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->namatergugat == '') {
+            $message = 'Nama Tergugat is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->nomorperkara == '') {
+            $message = 'Nomor Perkara is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->jeniskasus == '') {
+            $message = 'Jenis Kasus is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->sektor == '') {
+            $message = 'Sektor is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->dakwaan == '') {
+            $message = 'Dakwaan is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->nilaikerugian == '') {
+            $message = 'Nilai Kerugian is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->gantirugi == '') {
+            $message = 'Tuntutan Ganti Rugi is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->pemulihan == '') {
+            $message = 'Tuntutan Ganti Rugi is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }
+        return true;
+    }
+}

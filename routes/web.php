@@ -3,9 +3,11 @@
 use App\Http\Controllers\AhliController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmbedController;
+use App\Http\Controllers\GugatanPerdataController;
 use App\Http\Controllers\LocalServiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SDAController;
+use App\Http\Livewire\GugatanPerdataComponent;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -40,14 +42,17 @@ Route::group(['middleware' => 'checkSession'], function () {
     Route::get('/cms/dashboard', [DashboardController::class, 'index'])->name('login');
     Route::get('/cms/dbahli', [AhliController::class, 'index'])->name('ahli');
     Route::get('/cms/dbsda', [SDAController::class, 'index'])->name('sda');
+    Route::get('/cms/gugatanperdata', [GugatanPerdataController::class, 'index'])->name('gugatanperdata');
 
     Route::group(['middleware' => 'cekUser'], function () {
         Route::get('/cms/adddatabase', [DashboardController::class, 'addDatabase'])->name('addDb');
+        Route::get('/cms/addgugatanperdata', [GugatanPerdataController::class, 'addGugatanPerdata'])->name('addgugatanperdata');
         Route::get('/cms/editdatabase/{id}', [DashboardController::class, 'editDatabase']);
         Route::get('/cms/addahli', [AhliController::class, 'addahli'])->name('addahli');
         Route::get('/cms/editahli/{id}', [AhliController::class, 'editahli'])->name('editahli');
         Route::get('/cms/addsda', [SDAController::class, 'addSda'])->name('addSda');
         Route::get('/cms/editsda/{id}', [SDAController::class, 'editsda'])->name('editsda');
+        Route::get('/cms/editperdata/{id}', [GugatanPerdataController::class, 'editperdata'])->name('editperdata');
 
 
     });

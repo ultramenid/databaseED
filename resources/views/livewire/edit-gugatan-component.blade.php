@@ -1,44 +1,42 @@
 <div class="max-w-5xl mx-auto py-12 px-4">
     <livewire:toastr />
-    <h1 class="font-bold sm:text-5xl text-4xl py-12">Edit Kasus SDA</h1>
+    <h1 class="font-bold sm:text-5xl text-4xl py-12">Tambah Gugatan Perdata</h1>
 
     <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
         <div class="sm:w-6/12 w-full" >
             <h1 class="text-xl   text-gray-900 mb-1">Tahun</h1>
-            <div class="  w-full"  wire:ignore>
-                <select id='date-dropdown' wire:model="tahun" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
+            <div class="w-full"  >
+                <select id='date-dropdown' wire:ignore wire:model.defer="tahun"  class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
+                    <option value="">Pilih Tahun</option>
                 </select>
             </div>
 
         </div>
-        {{-- <div class="sm:w-6/12 w-full">
-            <h1 class="text-xl   text-gray-900  mb-1">Tanggal Update</h1>
-            <div class="w-full" wire:ignore x-init="flatpickr('#tglupdate', { enableTime: false,dateFormat: 'Y-m-d', disableMobile: 'true'});">
-                <input id="tglupdate" type="text" class="bg-gray-100  text-gray-00  rounded w-full border  py-2 px-4 focus:outline-none  "  wire:model.defer='tglupdate' placeholder="Date. . . ">
-            </div>
-        </div> --}}
-
-    </div>
-
-    <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6">
-        <div class="sm:w-6/12 w-full" >
-            <h1 class="text-xl   text-gray-900  mb-1">Nama Terdakwa</h1>
-            <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='namaterdakwa' placeholder="Nama Terdakwa. . . ">
-        </div>
         <div class="sm:w-6/12 w-full">
-            <h1 class="text-xl   text-gray-900  mb-1">Status Terdakwa</h1>
+            <h1 class="text-xl   text-gray-900  mb-1">Status Eksekusi</h1>
             <label class="w-full"  >
-                <select wire:ignore wire:model.defer='statusterdakwa' class="w-full bg-gray-100  text-gray-700  rounded  border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
+                <select wire:ignore  wire:model.defer='statuseksekusi' class="w-full bg-gray-100  text-gray-700  rounded  border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
                     <option value="">. . .</option>
-                    <option value="Pengurus">Pengurus</option>
-                    <option value="Korporasi">Korporasi</option>
-                    <option value="Individu Dalam Korporasi">Individu dalam korporasi</option>
+                    <option value="Sudah Dilaksanakan">Sudah Dilaksanakan</option>
+                    <option value="Belum Dilaksanakan">Belum Dilaksanakan</option>
                 </select>
             </label>
         </div>
 
     </div>
 
+    <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6">
+        <div class="sm:w-6/12 w-full">
+            <h1 class="text-xl   text-gray-900  mb-1">Nama Penggugat</h1>
+            <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='namapenggugat' placeholder="Nama Penggugat. . . ">
+
+        </div>
+        <div class="sm:w-6/12 w-full">
+            <h1 class="text-xl   text-gray-900  mb-1">Nama Tergugat</h1>
+            <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='namatergugat' placeholder="Nama Tergugat. . . ">
+
+        </div>
+    </div>
     <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6">
         <div class="sm:w-6/12 w-full">
             <h1 class="text-xl   text-gray-900  mb-1">Nomor Perkara</h1>
@@ -60,12 +58,7 @@
             </div>
             @endif
         </div>
-
-
-
-
     </div>
-
     <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
         <div class="sm:w-6/12 w-full" >
             <h1 class="text-xl   text-gray-900  mb-1">Jenis Kasus</h1>
@@ -100,7 +93,6 @@
         </div>
 
     </div>
-
     <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
         <div class="sm:w-6/12 w-full" >
             <h1 class="text-xl   text-gray-900  mb-1">Nilai Kerugian</h1>
@@ -118,93 +110,122 @@
     <div class="w-full border py-4 px-4 border-black mt-10">
         <h1 class="text-xl text-center">Tuntutan</h1>
         <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
-            <div class="sm:w-6/12 w-full" >
-                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pidana Pokok</h1>
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='tuntutanpenjara' placeholder="Penjara. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='tuntutandenda' placeholder="Denda. . . ">
+            <div class="sm:w-4/12 w-full" >
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Ganti Rugi</h1>
+                <input  type="number" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='gantirugi' placeholder="Ganti Rugi. . . ">
 
             </div>
-            <div class="sm:w-6/12 w-full">
-                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pidana Tambahan</h1>
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='tuntutangantirugi' placeholder="Ganti Rugi. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='tuntutanpemulihan' placeholder="Pemulihan. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='tuntutansitaaset' placeholder="Sita Aset. . . ">
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pemulihan</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pemulihan' placeholder="Pemulihan.. ">
+            </div>
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='lainya' placeholder="Lainya.. ">
             </div>
         </div>
     </div>
 
-    {{-- Vonis Pengadilan Negeri --}}
+    {{-- Vonis Pengadilan Negara --}}
     <div class="w-full border py-4 px-4 border-black mt-10">
-        <h1 class="text-xl text-center">Vonis Pengadilan Negeri</h1>
+        <h1 class="text-xl text-center">Vonis Pengadilan Negara</h1>
         <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
-            <div class="sm:w-6/12 w-full" >
-                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pidana Pokok</h1>
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pnpenjara' placeholder="Penjara. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='pndenda' placeholder="Denda. . . ">
+            <div class="sm:w-4/12 w-full" >
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Ganti Rugi</h1>
+                <input  type="number" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pngantirugi' placeholder="Ganti Rugi. . . ">
 
             </div>
-            <div class="sm:w-6/12 w-full">
-                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pidana Tambahan</h1>
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pngantirugi' placeholder="Ganti Rugi. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='pnpemulihan' placeholder="Pemulihan. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='pnsitaaset' placeholder="Sita Aset. . . ">
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pemulihan dan Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pnpemulihan' placeholder="Pemulihan.. ">
+            </div>
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pnlainya' placeholder="Lainya.. ">
             </div>
         </div>
-        <h1 class="   text-gray-900  mb-1">File Putusan</h1>
-        <input wire:ignore  type="file"  accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='upnfile' placeholder="upload. . . ">
+        <h1 class="mt-4   text-gray-900  mb-1">File Putusan</h1>
+        <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pnfile' placeholder="upload. . . ">
         @if($pnfile)
-        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$pnfile) }}">Putusan Pengadilan Negara </a>
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$pnfile) }}">Vonis pengadilan negara </a>
         @endif
     </div>
 
-    {{-- Vonis Pengadilan Tinggi --}}
+    {{-- Vonis Pegadilan Tinggi --}}
     <div class="w-full border py-4 px-4 border-black mt-10">
         <h1 class="text-xl text-center">Vonis Pengadilan Tinggi</h1>
         <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
-            <div class="sm:w-6/12 w-full" >
-                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pidana Pokok</h1>
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='ptpenjara' placeholder="Penjara. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='ptdenda' placeholder="Denda. . . ">
+            <div class="sm:w-4/12 w-full" >
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Ganti Rugi</h1>
+                <input  type="number" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='ptgantirugi' placeholder="Ganti Rugi. . . ">
 
             </div>
-            <div class="sm:w-6/12 w-full">
-                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pidana Tambahan</h1>
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='ptgantirugi' placeholder="Ganti Rugi. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='ptpemulihan' placeholder="Pemulihan. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='ptsitaaset' placeholder="Sita Aset. . . ">
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pemulihan dan Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='ptpemulihan' placeholder="Pemulihan.. ">
+            </div>
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='ptlainya' placeholder="Lainya.. ">
             </div>
         </div>
-        <h1 class="   text-gray-900  mb-1">File Putusan</h1>
-        <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='uptfile' placeholder="upload. . . ">
+        <h1 class="mt-4   text-gray-900  mb-1">File Putusan</h1>
+        <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='ptfile' placeholder="upload. . . ">
         @if($ptfile)
-        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$ptfile) }}">Putusan Pengadilan Tinggi </a>
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$ptfile) }}">Vonis pengadilan tinggi </a>
         @endif
     </div>
 
-
-    {{-- Vonis Mahkamah Agung --}}
+    {{-- Vonis Kasasi MA --}}
     <div class="w-full border py-4 px-4 border-black mt-10">
-        <h1 class="text-xl text-center">Vonis Mahkamah Agung</h1>
+        <h1 class="text-xl text-center">Vonis Kasasi MA</h1>
         <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
-            <div class="sm:w-6/12 w-full" >
-                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pidana Pokok</h1>
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='mapenjara' placeholder="Penjara. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='madenda' placeholder="Denda. . . ">
+            <div class="sm:w-4/12 w-full" >
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Ganti Rugi</h1>
+                <input  type="number" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='magantirugi' placeholder="Ganti Rugi. . . ">
 
             </div>
-            <div class="sm:w-6/12 w-full">
-                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pidana Tambahan</h1>
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='magantirugi' placeholder="Ganti Rugi. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='mapemulihan' placeholder="Pemulihan. . . ">
-                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20 mt-2"  wire:model.defer='masitaaset' placeholder="Sita Aset. . . ">
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pemulihan dan Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='mapemulihan' placeholder="Pemulihan.. ">
+            </div>
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='malainya' placeholder="Lainya.. ">
             </div>
         </div>
-        <h1 class="   text-gray-900  mb-1">File Putusan</h1>
-        <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='umafile' placeholder="upload. . . ">
+        <h1 class="mt-4   text-gray-900  mb-1">File Putusan</h1>
+        <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='mafile' placeholder="upload. . . ">
         @if($mafile)
-        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$mafile) }}">Putusan Mahkamah Agung </a>
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$mafile) }}">Vonis kasasi MA </a>
         @endif
     </div>
+
+    {{-- Vonis PK MA --}}
+    <div class="w-full border py-4 px-4 border-black mt-10">
+        <h1 class="text-xl text-center">Vonis PK MA</h1>
+        <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
+            <div class="sm:w-4/12 w-full" >
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Ganti Rugi</h1>
+                <input  type="number" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pkmagantirugi' placeholder="Ganti Rugi. . . ">
+
+            </div>
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Pemulihan dan Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pkmapemulihan' placeholder="Pemulihan.. ">
+            </div>
+            <div class="sm:w-4/12 w-full">
+                <h1 class="text-xl   text-gray-900  mb-1 text-center">Lainya</h1>
+                <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pkmalainya' placeholder="Lainya.. ">
+            </div>
+        </div>
+        <h1 class="mt-4   text-gray-900  mb-1">File Putusan</h1>
+        <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pkmafile' placeholder="upload. . . ">
+        @if($pkmafile)
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$pkmafile) }}">Vonis PK MA </a>
+        @endif
+    </div>
+
     <div class="mt-6" x-data="{count:0}">
         <h1 class="text-xl   text-gray-900  mb-1">Kaidah Hukum</h1>
         <div class="w-full  "
@@ -259,11 +280,18 @@
 
     </div>
 
+    <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
 
+        <div class="w-full">
+            <h1 class="text-xl   text-gray-900  mb-1">Proses</h1>
+            <textarea class=" bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" wire:model='proses' name="proses" id="" cols="30" rows="10"></textarea>
+        </div>
 
-    <div class="flex justify-end mt-4">
-        <button wire:click='storeDatabase' class="bg-black py-2 px-4 text-white w-40">Update</button>
     </div>
+    <div class="flex justify-end mt-4">
+        <button wire:click='storeDatabase' class="bg-black py-2 px-4 text-white w-40">Save</button>
+    </div>
+
     <script>
         let dateDropdown = document.getElementById('date-dropdown');
 

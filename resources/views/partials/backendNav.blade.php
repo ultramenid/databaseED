@@ -12,6 +12,10 @@
             <div class="whitespace-nowrap hover:bg-gray-200 flex flex-nowrap  hover:px-2 py-3 rounded w-full @if($nav == 'sda' )border-b-2   border-newgray-900 @endif ">
                 <a href="{{url('/cms/dbsda')}}" class=" px-0.5  @if($nav == 'sda' )   text-black  @endif    cursor-pointer" >Database Kasus SDA</a>
             </div>
+
+            <div class="whitespace-nowrap hover:bg-gray-200 flex flex-nowrap  hover:px-2 py-3 rounded w-full @if($nav == 'gugatanperdata' )border-b-2   border-newgray-900 @endif ">
+                <a href="{{url('/cms/gugatanperdata')}}" class=" px-0.5  @if($nav == 'gugatanperdata' )   text-black  @endif    cursor-pointer" >Database Gugatan Perdata</a>
+            </div>
         </nav>
     </div>
 </div>

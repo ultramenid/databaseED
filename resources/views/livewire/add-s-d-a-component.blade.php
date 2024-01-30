@@ -60,10 +60,6 @@
             </div>
             @endif
         </div>
-
-
-
-
     </div>
 
     <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">

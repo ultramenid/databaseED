@@ -5,12 +5,14 @@ namespace App\Http\Livewire;
 use App\Exports\SDAExport;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DbsdaComponent extends Component
 {
+    use WithPagination;
     public $deleteName, $deleteID, $deleter;
-    public $dataField = 'tahun', $dataOrder = 'asc', $paginate = 10, $search = '';
+    public $dataField = 'tahun', $dataOrder = 'desc', $paginate = 10, $search = '';
 
     public function sortingField($field){
         $this->dataField = $field;
