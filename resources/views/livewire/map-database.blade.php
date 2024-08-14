@@ -19,25 +19,25 @@
         }).addTo(map);
 
 
-        var poly = L.tileLayer.betterWms('https://aws.simontini.id/geoserver/wms', {
-            layers: 'kpa:Provinsibaru',
-            transparent: true,
-            format: 'image/png',
-        }).addTo(map);
+        // var poly = L.tileLayer.betterWms('https://aws.simontini.id/geoserver/wms', {
+        //     layers: 'kpa:Provinsibaru',
+        //     transparent: true,
+        //     format: 'image/png',
+        // }).addTo(map);
 
 
-        var overlay = {
-            'Batas Administrasi' : poly
-        }
+        // var overlay = {
+        //     'Batas Administrasi' : poly
+        // }
 
-        var baseLayers = {
-        'Esri Dark' : dark,
-        OpenstreetMap : osm,
-        'Planet' : planet
-        };
+        // var baseLayers = {
+        // 'Esri Dark' : dark,
+        // OpenstreetMap : osm,
+        // 'Planet' : planet
+        // };
 
 
-        L.control.layers(baseLayers, overlay).addTo(map);
+        // L.control.layers(baseLayers, overlay).addTo(map);
 
         var markers = L.markerClusterGroup();
 

@@ -12,8 +12,8 @@
         <p class="text-center text-green-800 font-bold text-xl">(https://environmentaldefender.id)</p>
     </div>
         <div class="max-w-5xl mx-auto px-6" >
-                <livewire:map-choroplet-component />
-                {{-- <livewire:map-database /> --}}
+                {{-- <livewire:map-choroplet-component /> --}}
+                <livewire:map-database />
         </div>
     <div class="max-w-5xl mx-auto px-6 md:px-8 ">
 

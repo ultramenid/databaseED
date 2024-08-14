@@ -395,7 +395,7 @@ class AddDatabaseComponent extends Component
             $this->emit('toast',$message, $type);
             return;
         }elseif($this->perkembangankasus == ''){
-            $message = 'Kronologi is required';
+            $message = 'Perkembangan kasus is required';
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;
