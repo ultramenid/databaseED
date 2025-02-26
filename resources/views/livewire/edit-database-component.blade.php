@@ -14,57 +14,55 @@
             <span x-html="count"></span> / <span  x-html="$refs.countme.maxLength"></span>
           </div>
     </div>
-    <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0" x-data="{ open: @entangle('isProvinsi') }">
-        <div class="sm:w-4/12 w-full" >
+    <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0" >
+        <div class="sm:w-4/12 w-full" x-data="{open:false}" @click.away="open=false">
             <h1 class="text-xl   text-gray-900  mb-1">Provinsi</h1>
             <label class="w-full">
-                <div  wire:click='toogleProvinsi'   class="truncate w-full mb-2 bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm  border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$provinsi}}</div>
+                <div  @click="open=true"   class="truncate w-full mb-2 bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm  border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$provinsi}}</div>
             </label>
 
-            @if ($isProvinsi)
-            <div class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20"  >
-                <input   wire:model='chooseprovinsi' type="text" name="" id="" class="w-full mb-2 bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Provinsi. . .">
+
+            <div x-show="open" class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20"  >
+                <input   wire:model='chooseprovinsi' type="text" name="" id="" class="w-full mb-2  bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Provinsi. . .">
                 @foreach ($provincies as $key => $value)
-                    <a  wire:click="selectProvinsi('{{$value[0]}}')" class="text-white py-1 hover:bg-gray-700 px-4">{{$value[0]}}</a>
+                    <a  wire:click="selectProvinsi('{{$value[0]}}')"  class="text-white py-1 hover:bg-gray-700 px-4">{{$value[0]}}</a>
                 @endforeach
             </div>
-            @endif
+
 
 
         </div>
-        <div class="sm:w-4/12 w-full">
+        <div class="sm:w-4/12 w-full" x-data="{open:false}" @click.away="open=false">
             <h1 class="text-xl   text-gray-900  mb-1">Kabupaten/Kota</h1>
             <label class="w-full">
-                <div  wire:click='toogleKabkota'   class="truncate w-full mb-2 bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm   border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$kabkota}}</div>
+                <div  @click="open=true"   class="truncate w-full mb-2 bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm   border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$kabkota}}</div>
             </label>
 
-            @if ($isKabkota)
-            <div class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20"  >
+
+            <div x-show="open" class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20"  >
                 <input   wire:model='choosekabkota' type="text" name="" id="" class="w-full mb-2 bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Kabupaten Kota. . .">
 
                 @foreach ($kabkotas as $key => $value)
-                    <a wire:click="selectKabkota('{{$value[0]}}')" class="text-white py-1 hover:bg-gray-700 px-4">{{$value[0]}}</a>
+                    <a wire:click="selectKabkota('{{$value[0]}}')"  class="text-white py-1 hover:bg-gray-700 px-4">{{$value[0]}}</a>
                 @endforeach
 
             </div>
-            @endif
         </div>
         {{-- lat:{{$lat}} , long:{{$long}} --}}
-        <div class="sm:w-4/12 w-full">
+        <div class="sm:w-4/12 w-full" x-data="{open:false}" @click.away="open=false">
 
             <h1 class="text-xl   text-gray-900  mb-1">Kecamatan</h1>
             <label class="w-full">
-                <div  wire:click='toogleKecamatan'   class="truncate w-full mb-2 bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm  border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$kecamatan}}</div>
+                <div  @click="open=true"   class="truncate w-full mb-2 bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm  border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$kecamatan}}</div>
             </label>
 
-            @if ($isKecamatan)
-            <div class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20" >
+
+            <div x-show="open" class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20" >
                 <input   wire:model='choosekecamatan' type="text" name="" id="" class="w-full mb-2 bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Kecamatan. . .">
-                @foreach ($kecamatans as $key => $value )
+                @foreach ($kecamatans as $key => $value)
                     <a wire:click="selectKecamatan({{ $value['lat'] }},{{ $value['long'] }}, '{{$value['kecamatan']}}' )" class="text-white py-1 hover:bg-gray-700 px-4">{{$value['kecamatan']}}</a>
                 @endforeach
             </div>
-            @endif
         </div>
         {{-- <div class="sm:w-3/12 w-full">
 

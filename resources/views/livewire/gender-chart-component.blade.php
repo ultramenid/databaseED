@@ -19,7 +19,6 @@ document.addEventListener('livewire:load', function () {
         },
         title: {
           text: 'Gender',
-          align: 'left'
         },
         labels: [
         'Laki-Laki',

@@ -25,6 +25,16 @@
         <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6 ">
             <div class="sm:w-6/12 w-full border border-gray-400">
                 {{-- <iframe src="http://localhost:8000/embed/gender" frameborder="0" class="w-full h-full"></iframe> --}}
+                <livewire:province-component >
+            </div>
+            <div class="sm:w-6/12 w-full border border-gray-400 ">
+                {{-- <iframe src="http://localhost:8000/embed/jumlahkorban" frameborder="0" class="w-full h-full"></iframe> --}}
+                <livewire:kabkota-component />
+            </div>
+        </div>
+        <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-6 ">
+            <div class="sm:w-6/12 w-full border border-gray-400">
+                {{-- <iframe src="http://localhost:8000/embed/gender" frameborder="0" class="w-full h-full"></iframe> --}}
                 <livewire:gender-chart-component >
             </div>
             <div class="sm:w-6/12 w-full border border-gray-400 ">

@@ -4,7 +4,7 @@
     </div>
     <livewire:toastr />
     <div class="flex sm:flex-row flex-col sm:space-y-0 space-y-4 justify-between py-4 mt-12 items-center">
-        <div class="px-2 bg-black py-2 text-white cursor-pointer" wire:loading.remove wire:click="exportExcel">Export Excel</div>
+        {{-- <div class="px-2 bg-black py-2 text-white cursor-pointer" wire:loading.remove wire:click="exportExcel">Export Excel</div> --}}
         <button wire:loading wire:target='exportExcel' type="button" class="px-2 bg-black py-2 text-white cursor-not-allowed w-24">
             <svg class="animate-spin mx-auto h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -25,39 +25,25 @@
                                 </svg>
                          </div>
                      </th>
-                    <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer sm:w-1/12 w-4/12">
+                    <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer sm:w-2/12 w-4/12">
                        <div class="flex space-x-1">
-                           <a>Nama Penggugat</a>
+                           <a>Terdakwa</a>
 
                         </div>
                     </th>
-                    <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-4/12">
+                    <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-4/12">
                         <div class="flex space-x-1">
-                            <a>Nama Tergugat</a>
+                            <a>Objek</a>
                          </div>
                      </th>
                      <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-11/12">
                         <div class=" space-x-1 " >
-                            <a >Nomor Perkara</a>
-
-                         </div>
-                     </th>
-                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-11/12">
-                        <div class=" space-x-1 " >
-                            <a >Wilayah</a>
-
-                         </div>
-                     </th>
-                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-11/12">
-                        <div class=" space-x-1 " >
-                            <a >Sektor</a>
+                            <a >Dakwaan</a>
 
                          </div>
                      </th>
 
-
-
-                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-1/12 w-11/12">
+                     <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-2/12 w-11/12">
 
                      </th>
                 </tr>
@@ -69,22 +55,14 @@
                         <a>{{$item->tahun}}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700 ">
-                        <a href="{{ url('/cms/editperdata/'.$item->id) }}">{{ $item->namapenggugat }}</a>
+                        <a href="{{ url('/cms/editputusansatwa/'.$item->id) }}">{{ $item->terdakwa }}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->namatergugat}}</a>
+                        <a >{{$item->object}}</a>
                     </td>
                     <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->nomorperkara}}</a>
+                        <a >{{$item->dakwaan}}</a>
                     </td>
-                    <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->wilayah}}</a>
-                    </td>
-                    <td class="px-6 py-4 break-words text-xs  text-newgray-700">
-                        <a >{{$item->sektor}}</a>
-                    </td>
-
-
                     @if (session('role_id') == 0)
                     <td colspan="2" class=" break-words text-xs text-gray-500  px-6 relative">
                         <div class="relative flex justify-end" x-data="{ open: false }">
@@ -100,7 +78,7 @@
                                 x-show.transition="open"
                                 @click.away="open = false"
                                 x-cloak style="display: none !important">
-                                <a data-turbolinks="false" href="{{ url('/cms/editperdata/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 " @click.away="open = false">Edit</li></a>
+                                <a data-turbolinks="false" href="{{ url('/cms/editputusansatwa/'.$item->id) }}"><li class="block hover:bg-gray-200 cursor-pointer py-1 mt-2 px-4 " @click.away="open = false">Edit</li></a>
                                 <li class="block hover:bg-gray-200 cursor-pointer  py-1 mb-2 px-4 "  wire:click="delete({{ $item->id }})" @click.away="open = false">Delete</li>
                             </ul>
                         </div>

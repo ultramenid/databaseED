@@ -70,8 +70,6 @@ class AddGugatanComponent extends Component
         if($this->pnfile){
             $file = $this->pnfile->store('public/files/lampiran');
             $foto = $this->pnfile->hashName();
-
-
             return $foto;
         }else{
             return null;
@@ -82,39 +80,30 @@ class AddGugatanComponent extends Component
         if($this->ptfile){
             $file = $this->ptfile->store('public/files/lampiran');
             $foto = $this->ptfile->hashName();
-
-
             return $foto;
         }else{
             return null;
         }
-
     }
 
     public function uploadMa(){
         if($this->mafile){
             $file = $this->mafile->store('public/files/lampiran');
             $foto = $this->mafile->hashName();
-
-
             return $foto;
         }else{
             return null;
         }
-
     }
 
     public function uploadPKMa(){
         if($this->pkmafile){
             $file = $this->pkmafile->store('public/files/lampiran');
             $foto = $this->pkmafile->hashName();
-
-
             return $foto;
         }else{
             return null;
         }
-
     }
 
     public function storeDatabase(){

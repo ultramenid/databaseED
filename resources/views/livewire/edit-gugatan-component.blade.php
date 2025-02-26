@@ -43,20 +43,20 @@
             <input  type="text" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='nomorperkara' placeholder="Nomor Perkara. . . ">
 
         </div>
-        <div class="sm:w-6/12 w-full" >
+        <div class="sm:w-6/12 w-full" x-data="{open:false}" @click.away="open=false">
             <h1 class="text-xl   text-gray-900  mb-1">Wilayah</h1>
             <label class="w-full">
-                <div  wire:click='toogleProvinsi'   class="truncate w-full  bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm  border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$provinsi}}</div>
+                <div @click="open=true"   class="truncate w-full  bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm  border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$provinsi}}</div>
             </label>
 
-            @if ($isProvinsi)
-            <div class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20"  >
+
+            <div x-show="open" class="shadow px-4 py-4 flex flex-col   bg-black absolute z-20"  >
                 <input   wire:model.defer='chooseprovinsi' type="text" name="" id="" class="w-full   bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Provinsi. . .">
                 @foreach ($provincies as $key => $value)
                     <a  wire:click="selectProvinsi('{{$value[0]}}')"  class="text-white py-1 hover:bg-gray-700 px-4">{{$value[0]}}</a>
                 @endforeach
             </div>
-            @endif
+
         </div>
     </div>
     <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0 sm:space-y-0 space-y-4 mt-5">
@@ -146,8 +146,8 @@
         </div>
         <h1 class="mt-4   text-gray-900  mb-1">File Putusan</h1>
         <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pnfile' placeholder="upload. . . ">
-        @if($pnfile)
-        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$pnfile) }}">Vonis pengadilan negara </a>
+        @if($upnfile)
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$upnfile) }}">Vonis pengadilan negara </a>
         @endif
     </div>
 
@@ -171,8 +171,8 @@
         </div>
         <h1 class="mt-4   text-gray-900  mb-1">File Putusan</h1>
         <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='ptfile' placeholder="upload. . . ">
-        @if($ptfile)
-        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$ptfile) }}">Vonis pengadilan tinggi </a>
+        @if($uptfile)
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$uptfile) }}">Vonis pengadilan tinggi </a>
         @endif
     </div>
 
@@ -196,8 +196,8 @@
         </div>
         <h1 class="mt-4   text-gray-900  mb-1">File Putusan</h1>
         <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='mafile' placeholder="upload. . . ">
-        @if($mafile)
-        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$mafile) }}">Vonis kasasi MA </a>
+        @if($umafile)
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$umafile) }}">Vonis kasasi MA </a>
         @endif
     </div>
 
@@ -221,8 +221,8 @@
         </div>
         <h1 class="mt-4   text-gray-900  mb-1">File Putusan</h1>
         <input wire:ignore  type="file" accept="application/pdf" class="bg-gray-100  text-gray-700  rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20"  wire:model.defer='pkmafile' placeholder="upload. . . ">
-        @if($pkmafile)
-        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$pkmafile) }}">Vonis PK MA </a>
+        @if($upkmafile)
+        <a class="mt-8 text-green-500 underline" href="{{ asset('storage/files/lampiran/'.$upkmafile) }}">Vonis PK MA </a>
         @endif
     </div>
 

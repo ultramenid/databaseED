@@ -101,20 +101,19 @@
 
     </div>
 
-    <div class="" x-data="{ open: @entangle('isProvinsi') }">
+    <div class=""  x-data={open:false} @click.away="open=false">
         <h1 class="text-xl   text-gray-900  mb-1">Provinsi</h1>
         <label class="w-full">
-            <div  wire:click='toogleProvinsi'   class="truncate w-full mb-2 bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm  border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$provinsi}}</div>
+            <div  @click="open=true"   class="truncate w-full mb-2 bg-gray-100 cursor-pointer  text-gray-700  rounded text-sm  border py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" >{{$provinsi}}</div>
         </label>
 
-        @if ($isProvinsi)
-        <div class="shadow px-4 py-4 flex flex-col   bg-black  z-20 w-full"  >
+
+        <div x-show="open" class="shadow px-4 py-4 flex flex-col   bg-black  z-20 w-full"  >
             <input   wire:model='chooseprovinsi' type="text" name="" id="" class="w-full mb-2 bg-gray-100  text-gray-700  rounded   border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20" placeholder="Provinsi. . .">
             @foreach ($provincies as $key => $value)
                 <a  wire:click="selectProvinsi('{{$value[0]}}')" class="text-white py-1 hover:bg-gray-700 px-4">{{$value[0]}}</a>
             @endforeach
         </div>
-        @endif
 
     </div>
     <div class="mt-6" >

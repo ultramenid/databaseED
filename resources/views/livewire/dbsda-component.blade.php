@@ -13,7 +13,7 @@
         </button>
         <input class="sm:w-52 w-full mb-4 py-2 border-gray-500 border px-2 focus:outline-none" wire:model='search'>
     </div>
-    <div class="overflow-x-auto">
+    <div class="">
         <table class="w-full divide-y divide-gray-200  rounded-lg  border border-gray-100">
             <thead class="">
                 <tr >
