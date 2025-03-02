@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('dbputusansatwa', function (Blueprint $table) {
             $table->longText('dakwaan')->change();
+            $table->longText('terdakwa')->change();
             $table->longText('object')->change();
         });
     }
@@ -26,8 +27,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('eddatabase', function (Blueprint $table) {
+        Schema::table('dbputusansatwa', function (Blueprint $table) {
             $table->string('dakwaan')->change();
+            $table->string('terdakwa')->change();
             $table->string('object')->change();
         });
     }
