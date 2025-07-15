@@ -1,39 +1,39 @@
 <div>
-    <h1 class="font-bold">Data ancaman ED</h1>
-    <div id="containerbentukancaman" class="w-full h-96 relative mt-6 "></div>
+    <div id="containerancaman" class="w-full h-64 relative mt-12 "></div>
 
-{{-- <script>
-var options = {
-          series: [{{$bentuks->kriminalisasi}}, {{$bentuks->ancamanfisik}}, {{$bentuks->ancamannonfisik}}],
+
+<script>
+document.addEventListener('livewire:load', function () {
+    var genders = JSON.parse('<?php echo $genders  ?>');
+    console.log(genders)
+    var perusakanProperti = parseInt(genders.perusakanProperti || 0);
+    var pembunuhan = parseInt(genders.pembunuhan || 0);
+    var intimidasi = parseInt(genders.intimidasi || 0);
+    var kekerasaFisik = parseInt(genders.kekerasaFisik || 0);
+    var deportasi = parseInt(genders.deportasi || 0);
+    var penyalahGunaanHukum = parseInt(genders.penyalahGunaanHukum || 0);
+    // console.log(genders)
+    var options = {
+        //   series:  [perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum],
+          series:  [perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum],
           chart: {
-          type: 'donut',
-          width: '100%',
-          height: '100%',
+          type: 'pie',
           toolbar: {
          show: true
         },
         },
-        plotOptions: {
-          pie: {
-            startAngle: -90,
-            endAngle: 90,
-            offsetY:0
-          }
-        },
         title: {
-          text: 'Bentuk Ancaman',
-          align: 'left'
-        },
-        grid: {
-          padding: {
-            bottom: 0
-          }
+          text: 'Tindakan',
         },
         labels: [
-        'Kriminalisasi',
-        'Ancaman Fisik',
-        'Ancaman Psikologis/Non Fisik'
+        'Perusakan Properti',
+        'Pembunuhan',
+        'Intimidasi',
+        'Kekerasan Fisik',
+        'Deportasi',
+        'Penyalahgunaan Proses Hukum'
       ],
+      colors:['#01befe','#ffdd00','#ff7d00','#ff006d','#adff02','#8f00ff'],
       legend: {
           show:true,
           position: 'bottom',
@@ -41,90 +41,41 @@ var options = {
           verticalAlign: 'bottom',
           align:'center'
         },
+        dataLabels: {
+            formatter: function (val, opts) {
+            return opts.w.config.series[opts.seriesIndex]; // Show raw number instead of %
+            }
+        },
         responsive: [{
           breakpoint: 480,
           options: {
-            chart: {
-              width: '100%'
+            chart:{
+                width: 200
             },
-
+            legend: {
+              position: 'bottom'
+            }
           }
         }]
         };
 
-        var chart = new ApexCharts(document.querySelector("#containerbentukancaman"), options);
+
+        var chart = new ApexCharts(document.querySelector("#containerancaman"), options);
+        Livewire.on('updateAncaman', dataUpdate => {
+            updated = JSON.parse(dataUpdate);
+            // console.log()
+            var perusakanProperti = parseInt(updated.perusakanProperti || 0);
+            var pembunuhan = parseInt(updated.pembunuhan || 0);
+            var intimidasi = parseInt(updated.intimidasi || 0);
+            var kekerasaFisik = parseInt(updated.kekerasaFisik || 0);
+            var deportasi = parseInt(updated.deportasi || 0);
+            var penyalahGunaanHukum = parseInt(updated.penyalahGunaanHukum || 0);
+            chart.updateSeries([
+                perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum
+            ])
+            console.log(updated)
+        })
         chart.render();
-</script> --}}
-<script>
-document.addEventListener('livewire:load', function () {
-    var bentuk = JSON.parse('<?php echo $bentuktest  ?>');
-    // console.log(bentuk)
-
-    var H = Highcharts;
-
-    H.seriesTypes.sankey.prototype.pointAttribs = function(point, state) {
-        var opacity = this.options.linkOpacity,
-            color = point.color;
-
-        if (state) {
-            opacity = this.options.states[state].linkOpacity || opacity;
-            color = this.options.states[state].color || point.color;
-        }
-
-        return {
-            fill: point.isNode ?
-                color : {
-                    linearGradient: {
-                        x1: 0,
-                        x2: 1,
-                        y1: 0,
-                        y2: 0
-                    },
-                    stops: [
-                        [0, H.color(color).setOpacity(opacity).get()],
-                        [1, H.color(point.toNode.color).setOpacity(opacity).get()]
-                    ]
-                }
-        };
-    }
-    const chart = Highcharts.chart('containerbentukancaman', {
-
-        title: {
-            text: 'Bentuk Ancaman dan Akibat'
-        },
-        accessibility: {
-            point: {
-                valueDescriptionFormat: '{index}. {point.from} to {point.to}, {point.weight}.'
-            }
-        },
-        series: [{
-            keys: ['from', 'to', 'weight'],
-            data: bentuk,
-            type: 'sankey',
-            name: 'Bentuk Ancaman dan Akibat'
-
-        }],
-        exporting: {
-            buttons: {
-            contextButton: {
-                menuItems: ["printChart",
-                            "separator",
-                            "downloadPNG",
-                            "downloadJPEG",
-                            "separator",
-                            "downloadCSV",
-                            "openInCloud"]
-            }
-            }
-        }
-    });
-
-    Livewire.on('updateSankey', dataUpdate => {
-        updated = JSON.parse(dataUpdate);
-        // chart.redraw();
-        chart.series[0].setData(updated);
-        // console.log(updated)
     })
-})
 </script>
 </div>

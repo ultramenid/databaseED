@@ -7,31 +7,27 @@ use Livewire\Component;
 
 class BentukAncamanComponent extends Component
 {
-    public function getBentuk(){
+    public function getBentukTest()
+    {
         $jumlah =  DB::table('eddatabase')
-        ->selectRaw('DISTINCT bentukancaman, akibat')
-        ->get();
-        // dd($jumlah);
-        return $jumlah;
-    }
+            ->selectRaw('SUM(tindakan="Perusakan Properti") as perusakanProperti, SUM(tindakan ="Pembunuhan") as pembunuhan, SUM(tindakan = "Intimidasi") as intimidasi, SUM(tindakan = "Kekerasan Fisik") as kekerasanFisik, SUM(tindakan = "Deportasi") as deportasi, SUM(tindakan = "Penyalahgunaan Proses Hukum") as penyalahGunaanHukum')
+            ->first();
 
-    public function getBentukTest(){
-        $jumlah =  DB::table('eddatabase')
-        ->selectRaw('DISTINCT bentukancaman, akibat')
-        ->get();
-        // dd($jumlah);
-        // return $jumlah;
-        foreach($jumlah as $item){
-            $setdata = array($item->bentukancaman, $item->akibat, getScore($item->bentukancaman, $item->akibat));
-            $data[] = $setdata;
-        }
-        // dd($data);
+        $data['perusakanProperti'][] = $jumlah->perusakanProperti;
+        $data['pembunuhan'][] = $jumlah->pembunuhan;
+        $data['intimidasi'][] = $jumlah->intimidasi;
+        $data['kekerasanFisik'][] = $jumlah->kekerasanFisik;
+        $data['deportasi'][] = $jumlah->deportasi;
+        $data['penyalahGunaanHukum'][] = $jumlah->penyalahGunaanHukum;
+
+
         return json_encode($data);
     }
+
+
     public function render()
     {
-        $bentuks = $this->getBentuk();
-        $bentuktest = $this->getBentukTest();
-        return view('livewire.bentuk-ancaman-component',compact('bentuks', 'bentuktest'));
+        $genders = $this->getBentukTest();
+        return view('livewire.bentuk-ancaman-component', compact('genders'));
     }
 }
