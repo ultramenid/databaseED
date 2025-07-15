@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Http;
-// use App\Http\Livewire\ImageManager;
 use Intervention\Image\ImageManager as ImageImageManager;
 
 class AddDatabaseComponent extends Component
@@ -16,7 +15,7 @@ class AddDatabaseComponent extends Component
     public $photo, $provinsi = '. . .', $kabkota = '. . .', $kecamatan = '. . .', $desa = '. . .', $pelakus = [], $sumberurl = [], $pelaku = '. . .', $jeniskelamin, $tglkejadian, $kasus, $issu, $korban, $pekerjaan, $jumlahkorban, $namapelaku, $konflikdengan, $kronologi, $perkembangankasus, $akibat, $bentukancaman, $sektor;
     public $isProvinsi = false, $isKabkota = false, $isKecamatan = false, $isPelaku = false, $isMap = false, $isDesa = false;
     public $idProvinsi, $idKabkota, $idKecamatan, $lat = '', $long = '';
-    public $chooseprovinsi = '', $choosekabkota = '', $choosekecamatan = '', $choosepelaku = '', $choosedesa = '', $url;
+    public $chooseprovinsi = '', $choosekabkota = '', $choosekecamatan = '', $choosepelaku = '', $choosedesa = '', $url, $tindakan = '';
 
     public function uploadImage()
     {
@@ -114,9 +113,8 @@ class AddDatabaseComponent extends Component
                 'jeniskelamin' => $this->jeniskelamin,
                 'jumlahkorban' => $this->jumlahkorban,
                 'pelaku' => $this->getstringPelaku(),
-                'akibat' => $this->akibat,
+                'tindakan' => $this->tindakan,
                 'konflikdengan' => $this->konflikdengan,
-                'bentukancaman' => $this->bentukancaman,
                 'sektor' => $this->sektor,
                 'kronologi' => $this->kronologi,
                 'perkembangankasus' => $this->perkembangankasus,
@@ -421,6 +419,11 @@ class AddDatabaseComponent extends Component
             return;
         } elseif ($this->sumberurl == '') {
             $message = 'Sumber URL is required';
+            $type = 'error'; //error, success
+            $this->emit('toast', $message, $type);
+            return;
+        } elseif ($this->tindakan == '') {
+            $message = 'Tindakan is required';
             $type = 'error'; //error, success
             $this->emit('toast', $message, $type);
             return;

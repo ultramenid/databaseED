@@ -180,21 +180,16 @@
     </div>
     <div class="flex sm:flex-row flex-col justify-between sm:space-x-4 space-x-0">
         <div class="sm:w-6/12 w-full">
-            <h1 class="text-xl   text-gray-900  mb-1">Akibat</h1>
+            <h1 class="text-xl   text-gray-900  mb-1">Tindakan</h1>
             <label class="w-full"  >
-                <select wire:ignore wire:model='akibat' class="w-full mb-6 bg-gray-100  text-gray-700  rounded  border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
+                <select wire:ignore wire:model='tindakan' class="w-full mb-6 bg-gray-100  text-gray-700  rounded  border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
                     <option value="">. . .</option>
-
-                    <option value="Penangkapan">Penangkapan</option>
-                    <option value="Penahanan">Penahanan</option>
-                    <option value="Meninggal Dunia">Meninggal Dunia</option>
-                    <option value="Luka-Luka">Luka-Luka</option>
-                    <option value="Gangguan Sikologis">Gangguan Psikologis</option>
+                    <option value="Perusakan Properti">Perusakan Properti</option>
+                    <option value="Pembunuhan">Pembunuhan</option>
+                    <option value="Intimidasi">Intimidasi</option>
+                    <option value="Kekerasan Fisik">Kekerasan Fisik</option>
                     <option value="Deportasi">Deportasi</option>
-                    <option value="Pengrusakan">Pengrusakan</option>
-                    <option value="Pembakaran">Pembakaran</option>
-                    <option value="Gugatan Hukum">Gugatan Hukum</option>
-                    <option value="Pemeriksaan Ilegal">Pemeriksaan Ilegal</option>
+                    <option value="Penyalahgunaan Proses Hukum">Penyalahgunaan Proses Hukum</option>
                 </select>
             </label>
         </div>
@@ -206,18 +201,7 @@
               </div>
         </div>
     </div>
-    <div class="">
-        <h1 class="text-xl   text-gray-900  mb-1">Bentuk Ancaman</h1>
-        <label class="w-full"  >
-            <select wire:ignore wire:model='bentukancaman' class="w-full mb-6 bg-gray-100  text-gray-700  rounded  border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
-                <option value="">. . .</option>
 
-                <option value="Kriminalisasi">Kriminalisasi</option>
-                <option value="Ancaman Fisik">Ancaman Fisik</option>
-                <option value="Ancaman Psikologis/Non Fisik">Ancaman Psikologis/Non Fisik</option>
-            </select>
-        </label>
-    </div>
     <div class="">
         <h1 class="text-xl   text-gray-900  mb-1">Sektor</h1>
         <label class="w-full"  >

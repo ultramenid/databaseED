@@ -15,7 +15,7 @@ class EditDatabaseComponent extends Component
     public $uphoto, $photo, $provinsi = '. . .', $kabkota = '. . .', $kecamatan = '. . .', $desa = '. . .', $pelakus = [], $sumberurl = [], $pelaku, $jeniskelamin, $tglkejadian, $kasus, $issu, $korban, $pekerjaan, $jumlahkorban, $namapelaku, $konflikdengan, $kronologi, $perkembangankasus, $akibat, $bentukancaman, $sektor;
     public $isProvinsi = false, $isKabkota = false, $isKecamatan = false, $isPelaku = false, $isMap = false, $isDesa = false;
     public $idProvinsi, $idKabkota, $idKecamatan, $lat = '', $long = '';
-    public $chooseprovinsi = '', $choosekabkota = '', $choosekecamatan = '', $choosepelaku = '', $choosedesa = '', $url, $idDB;
+    public $chooseprovinsi = '', $choosekabkota = '', $choosekecamatan = '', $choosepelaku = '', $choosedesa = '', $url, $idDB, $tindakan = '';
 
     public function mount($idDB)
     {
@@ -43,6 +43,7 @@ class EditDatabaseComponent extends Component
         $this->lat = $data->lat;
         $this->long = $data->long;
         $this->uphoto = $data->img;
+        $this->tindakan = $data->tindakan;
     }
     public function uploadImage()
     {
@@ -98,9 +99,8 @@ class EditDatabaseComponent extends Component
                     'jeniskelamin' => $this->jeniskelamin,
                     'jumlahkorban' => $this->jumlahkorban,
                     'pelaku' => $this->getstringPelaku(),
-                    'akibat' => $this->akibat,
+                    'tindakan' => $this->tindakan,
                     'konflikdengan' => $this->konflikdengan,
-                    'bentukancaman' => $this->bentukancaman,
                     'sektor' => $this->sektor,
                     'kronologi' => $this->kronologi,
                     'perkembangankasus' => $this->perkembangankasus,
@@ -374,7 +374,8 @@ class EditDatabaseComponent extends Component
         $provincies = $this->getprovinsi();
         $kabkotas = $this->getKabkota();
         $kecamatans = $this->getKecamatan();
-        return view('livewire.edit-database-component', compact('provincies', 'kabkotas', 'kecamatans'));
+        $idDB = $this->idDB;
+        return view('livewire.edit-database-component', compact('provincies', 'kabkotas', 'kecamatans', 'idDB'));
     }
 
     public function manualValidation()
