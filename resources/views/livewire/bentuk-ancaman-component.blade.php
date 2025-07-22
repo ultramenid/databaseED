@@ -17,7 +17,8 @@ document.addEventListener('livewire:load', function () {
         //   series:  [perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum],
           series:  [perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum],
           chart: {
-          type: 'pie',
+          type: 'donut',
+          height: '400px',
           toolbar: {
          show: true
         },
@@ -50,7 +51,7 @@ document.addEventListener('livewire:load', function () {
           breakpoint: 480,
           options: {
             chart:{
-                width: 200
+                width: '100%',
             },
             legend: {
               position: 'bottom'

@@ -352,6 +352,11 @@ class AddDatabaseComponent extends Component
             $type = 'error'; //error, success
             $this->emit('toast', $message, $type);
             return;
+        } elseif ($this->photo == '') {
+            $message = 'Foto is required';
+            $type = 'error'; //error, success
+            $this->emit('toast', $message, $type);
+            return;
         } elseif ($this->kasus == '') {
             $message = 'Kasus is required';
             $type = 'error'; //error, success
