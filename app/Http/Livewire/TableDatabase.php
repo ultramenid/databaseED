@@ -40,6 +40,7 @@ class TableDatabase extends Component
             return  DB::table('eddatabase')
                         ->select('kasus', 'tanggalkejadian', 'kronologi', 'id', 'provinsi')
                         ->where('kasus', 'like', $sc)
+                        ->orWhere('tindakan', 'like', $sc)
                         ->orderBy($this->dataField, $this->dataOrder)
                         ->whereBetween('tanggalkejadian', [$this->start, $this->end])
                         ->paginate($this->paginate);
