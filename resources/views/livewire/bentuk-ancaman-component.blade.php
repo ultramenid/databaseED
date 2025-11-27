@@ -34,7 +34,7 @@ document.addEventListener('livewire:load', function () {
         'Deportasi',
         'Penyalahgunaan Proses Hukum'
       ],
-      colors:['#01befe','#ffdd00','#ff7d00','#ff006d','#adff02','#8f00ff'],
+      colors:['#01befe','#ffdd00','#ff7d00','#ff006d','#4C6663','#8f00ff'],
       legend: {
           show:true,
           position: 'bottom',
