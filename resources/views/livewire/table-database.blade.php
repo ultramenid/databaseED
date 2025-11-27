@@ -37,7 +37,7 @@
                  </th>
                  <th  class="bg-gray-50 px-6 py-4   text-left text-xs font-medium text-gray-500 uppercase tracking-wider  sm:w-3/12 w-11/12">
                     <div class=" space-x-1 hidden sm:flex" >
-                        <a >Kronologi</a>
+                        <a >Tindakan</a>
 
                      </div>
                  </th>
@@ -60,7 +60,7 @@
                     <a href="{{ url('/cms/editdatabase/'.$item->id) }}">{{ $item->kasus }}</a>
                 </td>
                 <td class="px-6 py-4 break-words text-sm  text-newgray-700 sm:block hidden">
-                    <a >{{ substr($item->kronologi,0,140).'...'  }}</a>
+                    <a >{{ $item->tindakan  }}</a>
                 </td>
 
 

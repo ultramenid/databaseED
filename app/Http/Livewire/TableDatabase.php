@@ -38,7 +38,7 @@ class TableDatabase extends Component
         $sc = '%' . $this->search . '%';
         try {
             return  DB::table('eddatabase')
-                        ->select('kasus', 'tanggalkejadian', 'kronologi', 'id', 'provinsi')
+                        ->select('kasus', 'tanggalkejadian', 'tindakan', 'id', 'provinsi')
                         ->where('kasus', 'like', $sc)
                         ->orWhere('tindakan', 'like', $sc)
                         ->orderBy($this->dataField, $this->dataOrder)
