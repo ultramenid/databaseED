@@ -15,7 +15,7 @@ document.addEventListener('livewire:load', function () {
     // console.log(genders)
     var options = {
         //   series:  [perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum],
-          series:  [perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum],
+          series:  [perusakanProperti, pembunuhan, intimidasi, kekerasanFisik, deportasi, penyalahGunaanHukum],
           chart: {
           type: 'donut',
           height: '400px',
