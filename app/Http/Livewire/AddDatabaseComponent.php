@@ -100,6 +100,7 @@ class AddDatabaseComponent extends Component
     }
     public function storeDatabase()
     {
+        // dd($this->tindakan);
         if ($this->manualValidation()) {
             DB::table('eddatabase')->insert([
                 'tanggalkejadian' => $this->tglkejadian,

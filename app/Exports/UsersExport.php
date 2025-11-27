@@ -22,7 +22,7 @@ class UsersExport implements  FromCollection, WithHeadings
     public function collection()
     {
         return DB::table('eddatabase')
-        ->select('tanggalkejadian', 'kasus', 'provinsi', 'kabkota', 'kecamatan', 'issu', 'korban', 'pekerjaan', 'jeniskelamin','jumlahkorban', 'pelaku', 'namapelaku', 'akibat', 'konflikdengan', 'bentukancaman','sektor', 'kronologi', 'perkembangankasus', 'sumber', 'lat', 'long', 'img', 'created_at', 'updated_at')
+        ->select('tanggalkejadian', 'kasus', 'provinsi', 'kabkota', 'kecamatan', 'issu', 'korban', 'pekerjaan', 'jeniskelamin','jumlahkorban', 'pelaku', 'namapelaku', 'akibat', 'konflikdengan', 'bentukancaman','sektor', 'kronologi', 'perkembangankasus', 'sumber', 'lat', 'long', 'img', 'created_at', 'updated_at', 'tindakan')
         ->whereBetween('tanggalkejadian', [$this->start, $this->end])
         ->get();
     }
@@ -53,6 +53,7 @@ class UsersExport implements  FromCollection, WithHeadings
             "img",
             "created_at",
             "updated_at",
+            "tindakan"
         ];
     }
 
