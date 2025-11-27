@@ -9,12 +9,12 @@ document.addEventListener('livewire:load', function () {
     var perusakanProperti = parseInt(genders.perusakanProperti || 0);
     var pembunuhan = parseInt(genders.pembunuhan || 0);
     var intimidasi = parseInt(genders.intimidasi || 0);
-    var kekerasaFisik = parseInt(genders.kekerasaFisik || 0);
+    var kekerasanFisik = parseInt(genders.kekerasanFisik || 0);
     var deportasi = parseInt(genders.deportasi || 0);
     var penyalahGunaanHukum = parseInt(genders.penyalahGunaanHukum || 0);
     // console.log(genders)
     var options = {
-        //   series:  [perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum],
+        //   series:  [perusakanProperti, pembunuhan, intimidasi, kekerasanFisik, deportasi, penyalahGunaanHukum],
           series:  [perusakanProperti, pembunuhan, intimidasi, kekerasanFisik, deportasi, penyalahGunaanHukum],
           chart: {
           type: 'donut',
@@ -68,11 +68,11 @@ document.addEventListener('livewire:load', function () {
             var perusakanProperti = parseInt(updated.perusakanProperti || 0);
             var pembunuhan = parseInt(updated.pembunuhan || 0);
             var intimidasi = parseInt(updated.intimidasi || 0);
-            var kekerasaFisik = parseInt(updated.kekerasaFisik || 0);
+            var kekerasanFisik = parseInt(updated.kekerasanFisik || 0);
             var deportasi = parseInt(updated.deportasi || 0);
             var penyalahGunaanHukum = parseInt(updated.penyalahGunaanHukum || 0);
             chart.updateSeries([
-                perusakanProperti, pembunuhan, intimidasi, kekerasaFisik, deportasi, penyalahGunaanHukum
+                perusakanProperti, pembunuhan, intimidasi, kekerasanFisik, deportasi, penyalahGunaanHukum
             ])
             console.log(updated)
         })
