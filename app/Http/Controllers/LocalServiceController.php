@@ -12,8 +12,6 @@ class LocalServiceController extends Controller
         ->select('kasus','lat', 'long','akibat','bentukancaman','korban', 'pelaku', 'jumlahkorban', 'konflikdengan', 'namapelaku','sektor', 'provinsi', 'kabkota', 'kecamatan')
         ->get();
 
-
-
         $original_data = json_decode($data, true);
         // dd($original_data);
         $features = array();

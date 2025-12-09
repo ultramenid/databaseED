@@ -65,7 +65,7 @@ class EditGugatanComponent extends Component
     public function getprovinsi(){
 
         try {
-            $req = Http::get('http://129.150.48.143:8080/geoserver/simontini/wfs',
+            $req = Http::get('https://aws.simontini.id/geoserver/simontini/wfs',
             [
                 'service' => 'wfs',
                 'version' => '1.1.1',

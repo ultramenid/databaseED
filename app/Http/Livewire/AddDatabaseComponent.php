@@ -44,16 +44,9 @@ class AddDatabaseComponent extends Component
     }
     public function getprovinsi()
     {
-        // $sc = '%' . $this->chooseprovinsi . '%';
-
-        // return  DB::table('provinces')
-        // ->select('id', 'name')
-        // ->where('name', 'like',  $sc)
-        // ->limit(15)
-        // ->get();
         try {
             $req = Http::get(
-                'http://129.150.48.143:8080/geoserver/simontini/wfs',
+                'https://aws.simontini.id/geoserver/simontini/wfs',
                 [
                     'service' => 'wfs',
                     'version' => '1.1.1',
@@ -144,7 +137,7 @@ class AddDatabaseComponent extends Component
         // ->get();
         try {
             $req = Http::get(
-                'http://129.150.48.143:8080/geoserver/simontini/wfs',
+                'https://aws.simontini.id/geoserver/simontini/wfs',
                 [
                     'service' => 'wfs',
                     'version' => '1.1.1',
@@ -183,7 +176,7 @@ class AddDatabaseComponent extends Component
         // ->get();
         try {
             $req = Http::get(
-                'http://129.150.48.143:8080/geoserver/simontini/wfs',
+                'https://aws.simontini.id/geoserver/simontini/wfs',
                 [
                     'service' => 'wfs',
                     'version' => '1.1.1',
